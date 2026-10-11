@@ -1,0 +1,81 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Data archives, raw images, and processed arrays (large datasets)
+data/archives/*.zip
+data/raw/train_images/*
+data/raw/train_masks/*
+data/raw/test_images/*
+data/raw/test_masks/*
+!data/raw/train_images/.gitkeep
+!data/raw/train_masks/.gitkeep
+!data/raw/test_images/.gitkeep
+!data/raw/test_masks/.gitkeep
+
+data/processed/train_images/*
+data/processed/train_masks/*
+data/processed/test_images/*
+data/processed/test_masks/*
+!data/processed/train_images/.gitkeep
+!data/processed/train_masks/.gitkeep
+!data/processed/test_images/.gitkeep
+!data/processed/test_masks/.gitkeep
+
+# Checkpoints and weights
+checkpoints/*.pt
+checkpoints/*.pth
+checkpoints/*.onnx
+!checkpoints/.gitkeep
+
+# Results / outputs
+results/logs/*
+results/predictions/*
+results/figures/*
+!results/logs/.gitkeep
+!results/predictions/.gitkeep
+!results/figures/.gitkeep
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,957 @@
+{
+  "metadata": {
+    "split": "val",
+    "dataset_name": "ISIC Challenge",
+    "year": 2016,
+    "task": "Task 1: Lesion Boundary Segmentation",
+    "num_samples": 180,
+    "random_seed": 42,
+    "created_at": "2026-10-11T11:20:26.093537",
+    "preprocessing": {
+      "target_height": 256,
+      "target_width": 256,
+      "image_interpolation": "bilinear",
+      "mask_interpolation": "nearest",
+      "image_normalization": {
+        "scale_range": [
+          0.0,
+          1.0
+        ],
+        "apply_standardization": false,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "mask_binarization": {
+        "threshold": 128,
+        "expected_labels": [
+          0,
+          1
+        ]
+      },
+      "supported_image_extensions": [
+        ".jpg",
+        ".jpeg",
+        ".png"
+      ],
+      "supported_mask_extensions": [
+        ".png"
+      ],
+      "mask_suffix_patterns": [
+        "_Segmentation",
+        "_segmentation",
+        "_Segmentation.png",
+        "_segmentation.png"
+      ]
+    }
+  },
+  "samples": [
+    {
+      "id": "ISIC_0000016",
+      "image_path": "data/processed/train_images/ISIC_0000016.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000016_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000019",
+      "image_path": "data/processed/train_images/ISIC_0000019.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000019_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000026",
+      "image_path": "data/processed/train_images/ISIC_0000026.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000026_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000035",
+      "image_path": "data/processed/train_images/ISIC_0000035.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000035_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000039",
+      "image_path": "data/processed/train_images/ISIC_0000039.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000039_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000042",
+      "image_path": "data/processed/train_images/ISIC_0000042.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000042_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000044",
+      "image_path": "data/processed/train_images/ISIC_0000044.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000044_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000046",
+      "image_path": "data/processed/train_images/ISIC_0000046.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000046_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000048",
+      "image_path": "data/processed/train_images/ISIC_0000048.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000048_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000051",
+      "image_path": "data/processed/train_images/ISIC_0000051.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000051_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000065",
+      "image_path": "data/processed/train_images/ISIC_0000065.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000065_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000074",
+      "image_path": "data/processed/train_images/ISIC_0000074.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000074_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000075",
+      "image_path": "data/processed/train_images/ISIC_0000075.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000075_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000079",
+      "image_path": "data/processed/train_images/ISIC_0000079.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000079_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000091",
+      "image_path": "data/processed/train_images/ISIC_0000091.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000091_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000095",
+      "image_path": "data/processed/train_images/ISIC_0000095.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000095_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000127",
+      "image_path": "data/processed/train_images/ISIC_0000127.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000127_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000131",
+      "image_path": "data/processed/train_images/ISIC_0000131.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000131_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000137",
+      "image_path": "data/processed/train_images/ISIC_0000137.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000137_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000154",
+      "image_path": "data/processed/train_images/ISIC_0000154.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000154_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000162",
+      "image_path": "data/processed/train_images/ISIC_0000162.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000162_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000191",
+      "image_path": "data/processed/train_images/ISIC_0000191.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000191_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000220",
+      "image_path": "data/processed/train_images/ISIC_0000220.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000220_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000223",
+      "image_path": "data/processed/train_images/ISIC_0000223.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000223_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000225",
+      "image_path": "data/processed/train_images/ISIC_0000225.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000225_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000260",
+      "image_path": "data/processed/train_images/ISIC_0000260.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000260_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000262",
+      "image_path": "data/processed/train_images/ISIC_0000262.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000262_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000265",
+      "image_path": "data/processed/train_images/ISIC_0000265.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000265_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000274",
+      "image_path": "data/processed/train_images/ISIC_0000274.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000274_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000278",
+      "image_path": "data/processed/train_images/ISIC_0000278.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000278_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000293",
+      "image_path": "data/processed/train_images/ISIC_0000293.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000293_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000303",
+      "image_path": "data/processed/train_images/ISIC_0000303.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000303_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000307",
+      "image_path": "data/processed/train_images/ISIC_0000307.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000307_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000313",
+      "image_path": "data/processed/train_images/ISIC_0000313.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000313_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000314",
+      "image_path": "data/processed/train_images/ISIC_0000314.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000314_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000342",
+      "image_path": "data/processed/train_images/ISIC_0000342.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000342_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000351",
+      "image_path": "data/processed/train_images/ISIC_0000351.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000351_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000355",
+      "image_path": "data/processed/train_images/ISIC_0000355.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000355_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000361",
+      "image_path": "data/processed/train_images/ISIC_0000361.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000361_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000365",
+      "image_path": "data/processed/train_images/ISIC_0000365.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000365_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000367",
+      "image_path": "data/processed/train_images/ISIC_0000367.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000367_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000379",
+      "image_path": "data/processed/train_images/ISIC_0000379.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000379_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000384",
+      "image_path": "data/processed/train_images/ISIC_0000384.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000384_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000391",
+      "image_path": "data/processed/train_images/ISIC_0000391.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000391_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000409",
+      "image_path": "data/processed/train_images/ISIC_0000409.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000409_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000426",
+      "image_path": "data/processed/train_images/ISIC_0000426.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000426_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000458",
+      "image_path": "data/processed/train_images/ISIC_0000458.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000458_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000460",
+      "image_path": "data/processed/train_images/ISIC_0000460.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000460_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000474",
+      "image_path": "data/processed/train_images/ISIC_0000474.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000474_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000492",
+      "image_path": "data/processed/train_images/ISIC_0000492.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000492_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000493",
+      "image_path": "data/processed/train_images/ISIC_0000493.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000493_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000500",
+      "image_path": "data/processed/train_images/ISIC_0000500.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000500_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000519",
+      "image_path": "data/processed/train_images/ISIC_0000519.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000519_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000529",
+      "image_path": "data/processed/train_images/ISIC_0000529.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000529_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000530",
+      "image_path": "data/processed/train_images/ISIC_0000530.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000530_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000545",
+      "image_path": "data/processed/train_images/ISIC_0000545.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000545_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000554",
+      "image_path": "data/processed/train_images/ISIC_0000554.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000554_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000900",
+      "image_path": "data/processed/train_images/ISIC_0000900.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000900_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000999",
+      "image_path": "data/processed/train_images/ISIC_0000999.png",
+      "mask_path": "data/processed/train_masks/ISIC_0000999_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001102",
+      "image_path": "data/processed/train_images/ISIC_0001102.png",
+      "mask_path": "data/processed/train_masks/ISIC_0001102_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001119",
+      "image_path": "data/processed/train_images/ISIC_0001119.png",
+      "mask_path": "data/processed/train_masks/ISIC_0001119_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001140",
+      "image_path": "data/processed/train_images/ISIC_0001140.png",
+      "mask_path": "data/processed/train_masks/ISIC_0001140_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001187",
+      "image_path": "data/processed/train_images/ISIC_0001187.png",
+      "mask_path": "data/processed/train_masks/ISIC_0001187_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001216",
+      "image_path": "data/processed/train_images/ISIC_0001216.png",
+      "mask_path": "data/processed/train_masks/ISIC_0001216_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001286",
+      "image_path": "data/processed/train_images/ISIC_0001286.png",
+      "mask_path": "data/processed/train_masks/ISIC_0001286_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001367",
+      "image_path": "data/processed/train_images/ISIC_0001367.png",
+      "mask_path": "data/processed/train_masks/ISIC_0001367_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001742",
+      "image_path": "data/processed/train_images/ISIC_0001742.png",
+      "mask_path": "data/processed/train_masks/ISIC_0001742_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002206",
+      "image_path": "data/processed/train_images/ISIC_0002206.png",
+      "mask_path": "data/processed/train_masks/ISIC_0002206_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002374",
+      "image_path": "data/processed/train_images/ISIC_0002374.png",
+      "mask_path": "data/processed/train_masks/ISIC_0002374_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002438",
+      "image_path": "data/processed/train_images/ISIC_0002438.png",
+      "mask_path": "data/processed/train_masks/ISIC_0002438_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002469",
+      "image_path": "data/processed/train_images/ISIC_0002469.png",
+      "mask_path": "data/processed/train_masks/ISIC_0002469_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0003051",
+      "image_path": "data/processed/train_images/ISIC_0003051.png",
+      "mask_path": "data/processed/train_masks/ISIC_0003051_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0003308",
+      "image_path": "data/processed/train_images/ISIC_0003308.png",
+      "mask_path": "data/processed/train_masks/ISIC_0003308_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0004110",
+      "image_path": "data/processed/train_images/ISIC_0004110.png",
+      "mask_path": "data/processed/train_masks/ISIC_0004110_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0004168",
+      "image_path": "data/processed/train_images/ISIC_0004168.png",
+      "mask_path": "data/processed/train_masks/ISIC_0004168_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0004715",
+      "image_path": "data/processed/train_images/ISIC_0004715.png",
+      "mask_path": "data/processed/train_masks/ISIC_0004715_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0004985",
+      "image_path": "data/processed/train_images/ISIC_0004985.png",
+      "mask_path": "data/processed/train_masks/ISIC_0004985_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0005564",
+      "image_path": "data/processed/train_images/ISIC_0005564.png",
+      "mask_path": "data/processed/train_masks/ISIC_0005564_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0006800",
+      "image_path": "data/processed/train_images/ISIC_0006800.png",
+      "mask_path": "data/processed/train_masks/ISIC_0006800_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0007038",
+      "image_path": "data/processed/train_images/ISIC_0007038.png",
+      "mask_path": "data/processed/train_masks/ISIC_0007038_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0007557",
+      "image_path": "data/processed/train_images/ISIC_0007557.png",
+      "mask_path": "data/processed/train_masks/ISIC_0007557_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0007788",
+      "image_path": "data/processed/train_images/ISIC_0007788.png",
+      "mask_path": "data/processed/train_masks/ISIC_0007788_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008280",
+      "image_path": "data/processed/train_images/ISIC_0008280.png",
+      "mask_path": "data/processed/train_masks/ISIC_0008280_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008347",
+      "image_path": "data/processed/train_images/ISIC_0008347.png",
+      "mask_path": "data/processed/train_masks/ISIC_0008347_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008524",
+      "image_path": "data/processed/train_images/ISIC_0008524.png",
+      "mask_path": "data/processed/train_masks/ISIC_0008524_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009297",
+      "image_path": "data/processed/train_images/ISIC_0009297.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009297_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009599",
+      "image_path": "data/processed/train_images/ISIC_0009599.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009599_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009758",
+      "image_path": "data/processed/train_images/ISIC_0009758.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009758_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009875",
+      "image_path": "data/processed/train_images/ISIC_0009875.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009875_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009877",
+      "image_path": "data/processed/train_images/ISIC_0009877.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009877_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009883",
+      "image_path": "data/processed/train_images/ISIC_0009883.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009883_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009888",
+      "image_path": "data/processed/train_images/ISIC_0009888.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009888_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009895",
+      "image_path": "data/processed/train_images/ISIC_0009895.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009895_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009900",
+      "image_path": "data/processed/train_images/ISIC_0009900.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009900_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009905",
+      "image_path": "data/processed/train_images/ISIC_0009905.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009905_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009910",
+      "image_path": "data/processed/train_images/ISIC_0009910.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009910_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009921",
+      "image_path": "data/processed/train_images/ISIC_0009921.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009921_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009932",
+      "image_path": "data/processed/train_images/ISIC_0009932.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009932_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009950",
+      "image_path": "data/processed/train_images/ISIC_0009950.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009950_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009951",
+      "image_path": "data/processed/train_images/ISIC_0009951.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009951_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009961",
+      "image_path": "data/processed/train_images/ISIC_0009961.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009961_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009963",
+      "image_path": "data/processed/train_images/ISIC_0009963.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009963_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009964",
+      "image_path": "data/processed/train_images/ISIC_0009964.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009964_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009967",
+      "image_path": "data/processed/train_images/ISIC_0009967.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009967_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009976",
+      "image_path": "data/processed/train_images/ISIC_0009976.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009976_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009983",
+      "image_path": "data/processed/train_images/ISIC_0009983.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009983_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009987",
+      "image_path": "data/processed/train_images/ISIC_0009987.png",
+      "mask_path": "data/processed/train_masks/ISIC_0009987_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010014",
+      "image_path": "data/processed/train_images/ISIC_0010014.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010014_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010015",
+      "image_path": "data/processed/train_images/ISIC_0010015.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010015_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010040",
+      "image_path": "data/processed/train_images/ISIC_0010040.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010040_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010042",
+      "image_path": "data/processed/train_images/ISIC_0010042.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010042_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010044",
+      "image_path": "data/processed/train_images/ISIC_0010044.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010044_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010053",
+      "image_path": "data/processed/train_images/ISIC_0010053.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010053_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010064",
+      "image_path": "data/processed/train_images/ISIC_0010064.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010064_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010065",
+      "image_path": "data/processed/train_images/ISIC_0010065.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010065_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010067",
+      "image_path": "data/processed/train_images/ISIC_0010067.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010067_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010068",
+      "image_path": "data/processed/train_images/ISIC_0010068.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010068_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010078",
+      "image_path": "data/processed/train_images/ISIC_0010078.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010078_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010094",
+      "image_path": "data/processed/train_images/ISIC_0010094.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010094_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010105",
+      "image_path": "data/processed/train_images/ISIC_0010105.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010105_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010176",
+      "image_path": "data/processed/train_images/ISIC_0010176.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010176_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010177",
+      "image_path": "data/processed/train_images/ISIC_0010177.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010177_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010203",
+      "image_path": "data/processed/train_images/ISIC_0010203.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010203_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010222",
+      "image_path": "data/processed/train_images/ISIC_0010222.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010222_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010225",
+      "image_path": "data/processed/train_images/ISIC_0010225.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010225_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010228",
+      "image_path": "data/processed/train_images/ISIC_0010228.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010228_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010246",
+      "image_path": "data/processed/train_images/ISIC_0010246.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010246_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010251",
+      "image_path": "data/processed/train_images/ISIC_0010251.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010251_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010267",
+      "image_path": "data/processed/train_images/ISIC_0010267.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010267_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010323",
+      "image_path": "data/processed/train_images/ISIC_0010323.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010323_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010325",
+      "image_path": "data/processed/train_images/ISIC_0010325.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010325_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010332",
+      "image_path": "data/processed/train_images/ISIC_0010332.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010332_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010334",
+      "image_path": "data/processed/train_images/ISIC_0010334.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010334_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010341",
+      "image_path": "data/processed/train_images/ISIC_0010341.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010341_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010356",
+      "image_path": "data/processed/train_images/ISIC_0010356.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010356_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010357",
+      "image_path": "data/processed/train_images/ISIC_0010357.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010357_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010358",
+      "image_path": "data/processed/train_images/ISIC_0010358.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010358_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010365",
+      "image_path": "data/processed/train_images/ISIC_0010365.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010365_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010370",
+      "image_path": "data/processed/train_images/ISIC_0010370.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010370_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010439",
+      "image_path": "data/processed/train_images/ISIC_0010439.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010439_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010445",
+      "image_path": "data/processed/train_images/ISIC_0010445.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010445_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010455",
+      "image_path": "data/processed/train_images/ISIC_0010455.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010455_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010464",
+      "image_path": "data/processed/train_images/ISIC_0010464.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010464_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010466",
+      "image_path": "data/processed/train_images/ISIC_0010466.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010466_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010471",
+      "image_path": "data/processed/train_images/ISIC_0010471.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010471_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010476",
+      "image_path": "data/processed/train_images/ISIC_0010476.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010476_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010487",
+      "image_path": "data/processed/train_images/ISIC_0010487.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010487_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010558",
+      "image_path": "data/processed/train_images/ISIC_0010558.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010558_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010575",
+      "image_path": "data/processed/train_images/ISIC_0010575.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010575_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010576",
+      "image_path": "data/processed/train_images/ISIC_0010576.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010576_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010586",
+      "image_path": "data/processed/train_images/ISIC_0010586.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010586_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010595",
+      "image_path": "data/processed/train_images/ISIC_0010595.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010595_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010858",
+      "image_path": "data/processed/train_images/ISIC_0010858.png",
+      "mask_path": "data/processed/train_masks/ISIC_0010858_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011084",
+      "image_path": "data/processed/train_images/ISIC_0011084.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011084_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011118",
+      "image_path": "data/processed/train_images/ISIC_0011118.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011118_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011125",
+      "image_path": "data/processed/train_images/ISIC_0011125.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011125_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011126",
+      "image_path": "data/processed/train_images/ISIC_0011126.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011126_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011127",
+      "image_path": "data/processed/train_images/ISIC_0011127.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011127_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011130",
+      "image_path": "data/processed/train_images/ISIC_0011130.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011130_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011135",
+      "image_path": "data/processed/train_images/ISIC_0011135.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011135_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011140",
+      "image_path": "data/processed/train_images/ISIC_0011140.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011140_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011141",
+      "image_path": "data/processed/train_images/ISIC_0011141.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011141_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011145",
+      "image_path": "data/processed/train_images/ISIC_0011145.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011145_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011158",
+      "image_path": "data/processed/train_images/ISIC_0011158.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011158_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011159",
+      "image_path": "data/processed/train_images/ISIC_0011159.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011159_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011166",
+      "image_path": "data/processed/train_images/ISIC_0011166.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011166_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011199",
+      "image_path": "data/processed/train_images/ISIC_0011199.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011199_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011220",
+      "image_path": "data/processed/train_images/ISIC_0011220.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011220_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011225",
+      "image_path": "data/processed/train_images/ISIC_0011225.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011225_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011230",
+      "image_path": "data/processed/train_images/ISIC_0011230.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011230_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011295",
+      "image_path": "data/processed/train_images/ISIC_0011295.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011295_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011303",
+      "image_path": "data/processed/train_images/ISIC_0011303.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011303_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011328",
+      "image_path": "data/processed/train_images/ISIC_0011328.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011328_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011330",
+      "image_path": "data/processed/train_images/ISIC_0011330.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011330_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011332",
+      "image_path": "data/processed/train_images/ISIC_0011332.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011332_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011347",
+      "image_path": "data/processed/train_images/ISIC_0011347.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011347_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011352",
+      "image_path": "data/processed/train_images/ISIC_0011352.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011352_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011353",
+      "image_path": "data/processed/train_images/ISIC_0011353.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011353_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011360",
+      "image_path": "data/processed/train_images/ISIC_0011360.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011360_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011380",
+      "image_path": "data/processed/train_images/ISIC_0011380.png",
+      "mask_path": "data/processed/train_masks/ISIC_0011380_Segmentation.png"
+    }
+  ]
+}

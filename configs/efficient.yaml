@@ -1,0 +1,20 @@
+# Efficient TransAttUNet Experiment Configuration (Phase 2 Placeholder)
+model:
+  name: "EfficientTransAttUNet"
+  in_channels: 3
+  num_classes: 1
+  base_channels: 48
+  image_size: 256
+  use_efficient_gsa: true
+  drop_rate: 0.1
+
+training:
+  batch_size: 8
+  num_epochs: 100
+  learning_rate: 0.0001
+  optimizer: "adamw"
+  weight_decay: 0.0001
+  loss: "dice_bce"
+
+data:
+  config: "configs/data.yaml"
