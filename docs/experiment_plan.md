@@ -17,7 +17,7 @@ graph TD
 
 ### Phase Breakdown
 
-1. **Phase 1 — Dataset Acquisition, Preprocessing, and Validation (Current Phase)**:
+1. **Phase 1 — Dataset Acquisition, Preprocessing, and Validation (Completed)**:
    - Official ISIC 2016 Task 1 archive acquisition (900 train, 379 test).
    - Strict identifier-based pairing (`ISIC_XXXXXXX`).
    - Image & mask preprocessing to $256 \times 256$ with bilinear/nearest-neighbor rules.
@@ -26,11 +26,14 @@ graph TD
    - Data-independent segmentation metrics (`Dice`, `IoU`).
    - Automated test suite with synthetic fixtures (`pytest`).
 
-2. **Phase 2 — Baseline TransAttUNet Implementation & Training**:
-   - TransAttUNet architecture integrating Transformer self-attention into U-Net skip connections.
-   - Combined Dice + Binary Cross-Entropy loss function.
-   - Training loop with AdamW optimizer, cosine annealing scheduler, and early stopping.
-   - Metric logging to TensorBoard and JSON.
+2. **Phase 2 — Baseline TransAttUNet Implementation & Training (Completed)**:
+   - Original TransAttUNet architecture with Self-Aware Attention (SAA) bridge (GSA + TSA + Positional Embedding).
+   - Multi-scale inter-level decoder skip connections.
+   - Combined Soft Dice + Binary Cross-Entropy with Logits loss (`CombinedBCEDiceLoss`).
+   - Training engine with AdamW optimizer, cosine annealing scheduler, checkpointing, and metric logging.
+   - Single-image inference pipeline producing probability maps, binary masks, and visual overlays (`inference/predict.py`).
+   - Automated test coverage across model forward/backward, loss stability, CPU compatibility, and pipeline integration.
+
 
 3. **Phase 3 — Efficient Guided Self-Attention (GSA) Optimization**:
    - Linear or downsampled attention mechanism to alleviate quadratic complexity $\mathcal{O}(N^2)$.

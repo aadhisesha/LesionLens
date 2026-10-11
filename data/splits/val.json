@@ -6,7 +6,7 @@
     "task": "Task 1: Lesion Boundary Segmentation",
     "num_samples": 180,
     "random_seed": 42,
-    "created_at": "2026-10-11T11:20:26.093537",
+    "created_at": "2026-10-11T11:48:58.359838",
     "preprocessing": {
       "target_height": 256,
       "target_width": 256,
