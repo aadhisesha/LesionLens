@@ -132,13 +132,37 @@ def predict_mask(
     tensor = tensor.to(device)
 
     logits = model(tensor)
+    logits_np = logits.squeeze().cpu().numpy()  # (256, 256)
     probs = torch.sigmoid(logits).squeeze().cpu().numpy()  # (256, 256)
     binary_mask_256 = (probs >= threshold).astype(np.uint8)
 
+    # Compute detailed prediction diagnostics
+    unique_vals, val_counts = np.unique(binary_mask_256, return_counts=True)
+    mask_distribution = {int(k): int(v) for k, v in zip(unique_vals, val_counts)}
+
+    diagnostics: Dict[str, Any] = {
+        "logit_min": float(np.min(logits_np)),
+        "logit_max": float(np.max(logits_np)),
+        "logit_mean": float(np.mean(logits_np)),
+        "logit_std": float(np.std(logits_np)),
+        "prob_min": float(np.min(probs)),
+        "prob_max": float(np.max(probs)),
+        "prob_mean": float(np.mean(probs)),
+        "prob_std": float(np.std(probs)),
+        "pixels_ge_threshold": int(np.sum(probs >= threshold)),
+        "total_pixels": int(probs.size),
+        "pct_ge_threshold": float(np.mean(probs >= threshold) * 100.0),
+        "coverage_pct": float((np.sum(binary_mask_256) / binary_mask_256.size) * 100.0),
+        "mask_unique_values": [int(x) for x in unique_vals],
+        "mask_distribution": mask_distribution,
+    }
+
     result: Dict[str, Any] = {
+        "logits_256": logits_np,
         "prob_map_256": probs,
         "mask_256": binary_mask_256,
         "original_size": orig_size,
+        "diagnostics": diagnostics,
     }
 
     if resize_to_original:
@@ -149,6 +173,7 @@ def predict_mask(
         result["mask_original"] = mask_orig
 
     return result
+
 
 
 def save_prediction_visualization(
@@ -214,14 +239,28 @@ def main() -> int:
     print(f"Running inference on: {args.image}")
     result = predict_mask(model, args.image, threshold=args.threshold, device=device)
 
+    diag = result["diagnostics"]
+    print("\n--- PREDICTION DIAGNOSTICS ---")
+    print("Logits:")
+    print(f"  Min:  {diag['logit_min']:.4f}")
+    print(f"  Max:  {diag['logit_max']:.4f}")
+    print(f"  Mean: {diag['logit_mean']:.4f}")
+    print(f"  Std:  {diag['logit_std']:.4f}")
+    print("Probabilities:")
+    print(f"  Min:  {diag['prob_min']:.4f}")
+    print(f"  Max:  {diag['prob_max']:.4f}")
+    print(f"  Mean: {diag['prob_mean']:.4f}")
+    print(f"  Std:  {diag['prob_std']:.4f}")
+    print(f"Thresholding (cutoff = {args.threshold}):")
+    print(f"  Pixels >= {args.threshold}:       {diag['pixels_ge_threshold']} / {diag['total_pixels']} ({diag['pct_ge_threshold']:.2f}%)")
+    print(f"  Foreground coverage: {diag['coverage_pct']:.2f}% ({diag['pixels_ge_threshold']}/{diag['total_pixels']} pixels)")
+    print(f"  Mask unique values:  {diag['mask_unique_values']}")
+    print(f"  Mask distribution:   {diag['mask_distribution']}\n")
+
     saved_p = save_prediction_visualization(args.image, result, args.output)
     print(f"Visualization saved to: {saved_p.resolve()}")
-
-    lesion_pixels = int(np.sum(result["mask_256"]))
-    total_pixels = result["mask_256"].size
-    percentage = (lesion_pixels / total_pixels) * 100
-    print(f"Prediction complete. Predicted lesion coverage: {percentage:.2f}% ({lesion_pixels}/{total_pixels} pixels)")
     return 0
+
 
 
 if __name__ == "__main__":

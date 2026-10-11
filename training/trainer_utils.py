@@ -62,6 +62,8 @@ def save_checkpoint(
     config: Dict[str, Any],
     scheduler: Optional[Any] = None,
     seed: int = 42,
+    best_epoch: Optional[int] = None,
+    metrics_history: Optional[List[Dict[str, Any]]] = None,
     extra_metadata: Optional[Dict[str, Any]] = None,
 ) -> Path:
     """Save full training checkpoint for reproduction and resumption.
@@ -76,6 +78,8 @@ def save_checkpoint(
         config: Full configuration dictionary.
         scheduler: Optional learning rate scheduler.
         seed: Random seed used for training.
+        best_epoch: Optional best epoch index.
+        metrics_history: Optional history list of per-epoch metrics.
         extra_metadata: Optional additional metadata dict.
 
     Returns:
@@ -89,11 +93,13 @@ def save_checkpoint(
 
     state = {
         "epoch": epoch,
+        "best_epoch": int(best_epoch) if best_epoch is not None else epoch,
         "best_val_dice": float(best_val_dice),
         "val_iou": float(val_iou),
         "model_state_dict": model_to_save.state_dict(),
         "optimizer_state_dict": optimizer.state_dict(),
         "scheduler_state_dict": scheduler.state_dict() if scheduler is not None else None,
+        "metrics_history": list(metrics_history) if metrics_history is not None else [],
         "config": config,
         "seed": seed,
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

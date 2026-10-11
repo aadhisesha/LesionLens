@@ -215,22 +215,48 @@ def train(
     best_checkpoint_path = ckpt_dir / best_name
     latest_checkpoint_path = ckpt_dir / latest_name
 
+    json_path = log_cfg.get("metrics_json", "results/logs/train_metrics.json")
+    csv_path = log_cfg.get("metrics_csv", "results/logs/train_metrics.csv")
+    plot_path = log_cfg.get("plot_path", "results/figures/training_curves.png")
+
     start_epoch = 1
     best_val_dice = -1.0
     best_val_iou = -1.0
     best_epoch = 0
+    metrics_history: List[Dict[str, Any]] = []
 
     # Resumption
     if resume_checkpoint and Path(resume_checkpoint).is_file():
         print(f"Resuming training from checkpoint: {resume_checkpoint}")
         chk = load_checkpoint(resume_checkpoint, model, optimizer=optimizer, scheduler=scheduler, device=device)
-        start_epoch = chk.get("epoch", 0) + 1
-        best_val_dice = chk.get("best_val_dice", -1.0)
-        best_val_iou = chk.get("val_iou", -1.0)
-        best_epoch = chk.get("epoch", 0)
-        print(f"Resumed at epoch {start_epoch} (Best Dice so far: {best_val_dice:.4f})")
+        completed_epoch = chk.get("epoch", 0)
+        start_epoch = completed_epoch + 1
+        best_val_dice = float(chk.get("best_val_dice", -1.0))
+        best_val_iou = float(chk.get("val_iou", -1.0))
+        best_epoch = int(chk.get("best_epoch", completed_epoch))
 
-    metrics_history: List[Dict[str, Any]] = []
+        # Restore metrics history from checkpoint, or from json_path if consistent
+        if "metrics_history" in chk and chk["metrics_history"]:
+            metrics_history = [dict(m) for m in chk["metrics_history"] if m.get("epoch", 0) <= completed_epoch]
+        elif Path(json_path).is_file():
+            try:
+                import json
+                with open(json_path, "r", encoding="utf-8") as f:
+                    past_metrics = json.load(f)
+                    if isinstance(past_metrics, list):
+                        metrics_history = [dict(m) for m in past_metrics if m.get("epoch", 0) <= completed_epoch]
+            except Exception:
+                metrics_history = []
+
+        print(
+            f"Resumed from epoch {completed_epoch} -> starting epoch {start_epoch}/{total_epochs} "
+            f"(Best Val Dice: {best_val_dice:.4f} at epoch {best_epoch}, Restored {len(metrics_history)} history records)"
+        )
+        if start_epoch > total_epochs:
+            print(
+                f"NOTICE: Checkpoint already completed {completed_epoch} epochs, which is >= requested total_epochs ({total_epochs}). "
+                f"No additional epochs to run. To train further, specify a higher --epochs."
+            )
 
     # 6. Training loop
     for epoch in range(start_epoch, total_epochs + 1):
@@ -280,7 +306,14 @@ def train(
         }
         metrics_history.append(record)
 
-        # Save latest checkpoint
+        # Check for best validation Dice BEFORE saving so best_val_dice and best_epoch are updated
+        is_best = val_dice > best_val_dice
+        if is_best:
+            best_val_dice = val_dice
+            best_val_iou = val_iou
+            best_epoch = epoch
+
+        # Save latest checkpoint on every epoch
         save_checkpoint(
             checkpoint_path=latest_checkpoint_path,
             model=model,
@@ -291,13 +324,12 @@ def train(
             config=config,
             scheduler=scheduler,
             seed=seed,
+            best_epoch=best_epoch,
+            metrics_history=metrics_history,
         )
 
-        # Check for best validation Dice
-        if val_dice > best_val_dice:
-            best_val_dice = val_dice
-            best_val_iou = val_iou
-            best_epoch = epoch
+        # Save best checkpoint whenever improved
+        if is_best:
             save_checkpoint(
                 checkpoint_path=best_checkpoint_path,
                 model=model,
@@ -308,14 +340,16 @@ def train(
                 config=config,
                 scheduler=scheduler,
                 seed=seed,
+                best_epoch=best_epoch,
+                metrics_history=metrics_history,
             )
             print(f"  * New best validation Dice: {best_val_dice:.4f}! Saved to {best_checkpoint_path}")
 
-    # 7. Log metrics & plot curves
-    json_path = log_cfg.get("metrics_json", "results/logs/train_metrics.json")
-    csv_path = log_cfg.get("metrics_csv", "results/logs/train_metrics.csv")
-    plot_path = log_cfg.get("plot_path", "results/figures/training_curves.png")
+        # Update log files and plots incrementally on every epoch
+        log_metrics(metrics_history, json_path=json_path, csv_path=csv_path)
+        plot_training_curves(metrics_history, output_path=plot_path)
 
+    # 7. Final sync of metrics & plot curves
     log_metrics(metrics_history, json_path=json_path, csv_path=csv_path)
     plot_training_curves(metrics_history, output_path=plot_path)
 
