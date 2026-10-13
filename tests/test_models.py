@@ -3,6 +3,7 @@
 import pytest
 import torch
 import torch.nn as nn
+from pathlib import Path
 
 from models.transattunet import TransAttUNet
 from models.model_factory import build_model
@@ -78,9 +79,17 @@ def test_model_factory_build():
     assert isinstance(model_cfg, TransAttUNet)
 
 
+@pytest.mark.integration
 def test_dataset_model_loss_integration():
     """Integration test: One batch from dataset -> forward pass -> loss -> backward pass."""
     manifest_p = "data/splits/train.json"
+    processed_dir = Path("data/processed/train_images")
+    has_processed_images = processed_dir.is_dir() and any(
+        p.is_file() and p.suffix.lower() in {".png", ".jpg", ".jpeg", ".tif", ".bmp"}
+        for p in processed_dir.iterdir()
+    )
+    if not Path(manifest_p).is_file() or not has_processed_images:
+        pytest.skip("Full dataset not yet prepared. Run prepare_dataset.py first.")
     loader = get_dataloader(manifest_p, batch_size=2, shuffle=False)
     batch = next(iter(loader))
 

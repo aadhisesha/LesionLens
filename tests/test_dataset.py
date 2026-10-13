@@ -271,6 +271,14 @@ def test_full_dataset_integration():
     if not (train_manifest.is_file() and val_manifest.is_file() and test_manifest.is_file()):
         pytest.skip("Full dataset manifests not yet prepared. Run prepare_dataset.py first.")
 
+    processed_dir = Path("data/processed/train_images")
+    has_processed_images = processed_dir.is_dir() and any(
+        p.is_file() and p.suffix.lower() in {".png", ".jpg", ".jpeg", ".tif", ".bmp"}
+        for p in processed_dir.iterdir()
+    )
+    if not has_processed_images:
+        pytest.skip("Processed dataset images not found. Run prepare_dataset.py first.")
+
     # Check manifest sample counts
     with open(train_manifest) as f:
         train_samples = json.load(f)["samples"]

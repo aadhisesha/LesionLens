@@ -3,7 +3,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.14-EE4C2C.svg?style=flat&logo=pytorch)](https://pytorch.org)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB.svg?style=flat&logo=python)](https://python.org)
 [![License: CC-0](https://img.shields.io/badge/Dataset-ISIC%202016%20CC--0-green.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-[![Tests](https://img.shields.io/badge/Tests-31%20Passed-brightgreen.svg)](#running-automated-tests)
+[![Tests](https://img.shields.io/badge/Tests-46%20Passed%202%20Skipped-brightgreen.svg)](#running-automated-tests)
 
 An efficient, transformer-augmented attention U-Net architecture engineered for automated dermoscopic skin lesion boundary segmentation on the ISIC 2016 Task 1 benchmark.
 
@@ -79,30 +79,81 @@ python scripts/prepare_dataset.py --validate
 ## Phase 2 Execution Commands
 
 ### 1. Automated Testing
-Run the complete automated test suite (31 unit and integration tests covering model architecture, loss functions, dataset loaders, and metrics):
+Run the complete automated test suite (46 unit tests covering model architecture, loss functions, dataset loaders, metrics, checkpoint management, and scheduler compatibility):
 ```bash
 # Run model unit tests
 python -m pytest tests/test_models.py -v
 
-# Run loss unit tests
-python -m pytest tests/test_losses.py -v
+# Run trainer-utility and scheduler tests
+python -m pytest tests/test_trainer_utils.py -v
 
 # Run all test suites
 python -m pytest tests/ -v
 ```
+Unit tests use synthetic fixtures and run in under 30 seconds without any dataset download.
+Integration tests (marked `@pytest.mark.integration`) require the prepared ISIC dataset and are skipped automatically when it is not present.
 
 ### 2. Training the TransAttUNet Baseline
 
-#### A. One-Epoch Smoke Test (Fast CPU verification)
-Runs 2 training batches and 2 validation batches, saving a dedicated smoke checkpoint without overwriting production checkpoints:
+There are three distinct training experiment types:
+
+| Experiment | Purpose | Checkpoint Path | Scheduler |
+|------------|---------|-----------------|----------|
+| **Smoke test** | 2-batch sanity check on CPU/GPU | `checkpoints/smoke_test_checkpoint.pth` | T_max=1 |
+| **Calibration** (1 epoch) | Diagnostic timing/metrics run | `checkpoints/transattunet_baseline_best.pth` (temporary) | T_max=1 |
+| **Formal baseline** (30 epochs) | Full training for model selection | `checkpoints/transattunet_baseline_best.pth` / `_latest.pth` | **T_max=30** |
+
+> **Critical**: Never resume the formal 30-epoch run from a 1-epoch calibration checkpoint.
+> The calibration checkpoint contains `CosineAnnealingLR` scheduler state with `T_max=1`.
+> Loading this into a 30-epoch run would corrupt the LR decay curve.
+> The training code now detects and rejects incompatible scheduler states automatically.
+
+#### A. Smoke Test (Fast 2-batch CPU verification)
+Runs 2 training batches and 2 validation batches, saving a dedicated smoke checkpoint without overwriting formal checkpoints:
 ```bash
 python training/train.py --config configs/baseline.yaml --epochs 1 --max-train-batches 2 --max-val-batches 2
 ```
 
-#### B. Full Baseline Training
-Runs complete 30-epoch training on available hardware (automatically selects CUDA if available, otherwise CPU):
+#### B. Single-Epoch Calibration (Timing Diagnostic — GPU only)
+Runs exactly 1 full epoch to measure GPU throughput and verify metrics. **Keep as a separate artifact; do not use as a resume point for formal training.**
 ```bash
-python training/train.py --config configs/baseline.yaml
+python training/train.py --config configs/baseline.yaml --epochs 1 --device cuda
+```
+Back up calibration artifacts to Drive before starting the formal run:
+```bash
+# In Colab
+from google.colab import drive
+drive.mount('/content/drive')
+!mkdir -p /content/drive/MyDrive/LesionLens/phase2/calibration
+!cp checkpoints/transattunet_baseline_*.pth /content/drive/MyDrive/LesionLens/phase2/calibration/
+!cp results/logs/train_metrics.* /content/drive/MyDrive/LesionLens/phase2/calibration/
+```
+
+#### C. Formal Baseline Training — Fresh 30-Epoch Run
+Starts fresh from random initialization with a correctly configured `CosineAnnealingLR(T_max=30)` scheduler:
+```bash
+python training/train.py --config configs/baseline.yaml --device cuda
+```
+This overwrites `checkpoints/transattunet_baseline_best.pth` and `checkpoints/transattunet_baseline_latest.pth`.
+Do **not** add `--resume` pointing to the calibration checkpoint.
+
+#### D. Resuming an Interrupted Formal Run
+If the formal run is interrupted (e.g. Colab timeout), resume using the **formal latest checkpoint** (which has T_max=30 in its scheduler state):
+```bash
+python training/train.py \
+    --config configs/baseline.yaml \
+    --epochs 30 \
+    --resume checkpoints/transattunet_baseline_latest.pth \
+    --device cuda
+```
+The training code validates that the saved `T_max` matches the configured `total_epochs` before restoring the scheduler state. If the checkpoint's `T_max` does not match, a warning is printed and the scheduler starts fresh.
+
+**Restoring from Google Drive** (in a fresh Colab runtime):
+```bash
+from google.colab import drive
+drive.mount('/content/drive')
+!cp /content/drive/MyDrive/LesionLens/phase2/transattunet_baseline_latest.pth checkpoints/
+!cp /content/drive/MyDrive/LesionLens/phase2/train_metrics.json results/logs/
 ```
 
 **Training Options**:
@@ -111,12 +162,17 @@ python training/train.py --config configs/baseline.yaml
 - `--batch-size`: Override batch size (default: 4).
 - `--lr`: Override learning rate (default: 0.0001).
 - `--device`: Compute device (`auto`, `cuda`, or `cpu`).
-- `--resume`: Path to checkpoint to resume training.
+- `--resume`: Path to a **compatible** latest checkpoint to resume training.
 
 **Checkpoints Saved**:
 - Best validation model: `checkpoints/transattunet_baseline_best.pth`
 - Latest epoch model: `checkpoints/transattunet_baseline_latest.pth`
 - Smoke test model: `checkpoints/smoke_test_checkpoint.pth`
+
+**Metrics Logs**:
+- JSON: `results/logs/train_metrics.json`
+- CSV: `results/logs/train_metrics.csv`
+- Training curves: `results/figures/training_curves.png`
 
 ### 3. Inference on Single Images
 Run inference on an arbitrary lesion image to generate a predicted lesion probability map and binary mask:
@@ -134,11 +190,12 @@ Visual results (Input Image, Probability Map, Binary Mask) are saved to `results
 | Adapted TransAttUNet Model | `models/transattunet.py` | Produces `(B, 1, 256, 256)` raw logits from `(B, 3, 256, 256)` RGB input |
 | SAA Bridge (GSA + TSA + Pos) | `models/transattunet.py` | Verified in forward and backward passes |
 | Combined BCE + Soft Dice Loss | `training/losses.py` | Stable gradient propagation, handles empty masks |
-| Training Engine | `training/train.py` | Epoch loop, validation loop, AdamW optimizer, Cosine Annealing |
-| Checkpointing | `training/trainer_utils.py` | State dict, optimizer state, metrics, resume support |
+| Training Engine | `training/train.py` | Epoch loop, validation loop, AdamW optimizer, Cosine Annealing (T_max=30) |
+| Checkpointing | `training/trainer_utils.py` | State dict, optimizer state, scheduler state, metrics history, resume support |
+| Scheduler Compatibility Check | `training/trainer_utils.py` | Detects and rejects incompatible T_max on resume (e.g. T_max=1 calibration -> T_max=30 formal) |
 | Metrics Integration | `evaluation/metrics.py` | Dice coefficient & IoU with explicit thresholding |
 | Single-image Inference | `inference/predict.py` | Generates probability maps, binary masks, and visualizations |
-| Automated Test Coverage | `tests/` | **31 passed, 0 skipped, 0 failed** in 21s |
+| Automated Test Coverage | `tests/` | **46 passed, 2 skipped (integration, require dataset), 0 failed** |
 | Git Hygiene | `.gitignore` | Checkpoints, raw images, and prediction masks properly ignored |
 
 ---

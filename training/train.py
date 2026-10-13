@@ -228,25 +228,47 @@ def train(
     # Resumption
     if resume_checkpoint and Path(resume_checkpoint).is_file():
         print(f"Resuming training from checkpoint: {resume_checkpoint}")
-        chk = load_checkpoint(resume_checkpoint, model, optimizer=optimizer, scheduler=scheduler, device=device)
+        chk = load_checkpoint(
+            resume_checkpoint,
+            model,
+            optimizer=optimizer,
+            scheduler=scheduler,
+            device=device,
+            total_epochs=total_epochs,
+        )
         completed_epoch = chk.get("epoch", 0)
         start_epoch = completed_epoch + 1
         best_val_dice = float(chk.get("best_val_dice", -1.0))
-        best_val_iou = float(chk.get("val_iou", -1.0))
+        # Prefer the explicit best_val_iou field; fall back to val_iou for older checkpoints
+        best_val_iou = float(chk.get("best_val_iou", chk.get("val_iou", -1.0)))
         best_epoch = int(chk.get("best_epoch", completed_epoch))
 
-        # Restore metrics history from checkpoint, or from json_path if consistent
-        if "metrics_history" in chk and chk["metrics_history"]:
+        # Restore metrics history from checkpoint (authoritative source)
+        if "metrics_history" in chk and isinstance(chk["metrics_history"], list) and chk["metrics_history"]:
             metrics_history = [dict(m) for m in chk["metrics_history"] if m.get("epoch", 0) <= completed_epoch]
+            print(
+                f"  [Resume] Restored {len(metrics_history)} epoch records from checkpoint."
+            )
         elif Path(json_path).is_file():
+            # Fallback: read from JSON log if checkpoint has no history
+            print(
+                "  [Resume] Checkpoint has no metrics_history; falling back to JSON log."
+            )
             try:
-                import json
+                import json as _json
                 with open(json_path, "r", encoding="utf-8") as f:
-                    past_metrics = json.load(f)
+                    past_metrics = _json.load(f)
                     if isinstance(past_metrics, list):
                         metrics_history = [dict(m) for m in past_metrics if m.get("epoch", 0) <= completed_epoch]
-            except Exception:
+            except Exception as hist_err:
+                print(f"  [Resume] WARNING: Could not load JSON history: {hist_err}. Starting with empty history.")
                 metrics_history = []
+        else:
+            print(
+                "  [Resume] No metrics_history in checkpoint and no JSON log found. "
+                "Starting with empty metrics history."
+            )
+            metrics_history = []
 
         print(
             f"Resumed from epoch {completed_epoch} -> starting epoch {start_epoch}/{total_epochs} "
@@ -313,7 +335,7 @@ def train(
             best_val_iou = val_iou
             best_epoch = epoch
 
-        # Save latest checkpoint on every epoch
+        # Save latest checkpoint on every epoch (reflects updated best-metric state)
         save_checkpoint(
             checkpoint_path=latest_checkpoint_path,
             model=model,
@@ -321,6 +343,7 @@ def train(
             epoch=epoch,
             best_val_dice=best_val_dice,
             val_iou=val_iou,
+            best_val_iou=best_val_iou,
             config=config,
             scheduler=scheduler,
             seed=seed,
@@ -328,7 +351,7 @@ def train(
             metrics_history=metrics_history,
         )
 
-        # Save best checkpoint whenever improved
+        # Save best checkpoint whenever Dice improved
         if is_best:
             save_checkpoint(
                 checkpoint_path=best_checkpoint_path,
@@ -336,7 +359,8 @@ def train(
                 optimizer=optimizer,
                 epoch=epoch,
                 best_val_dice=best_val_dice,
-                val_iou=best_val_iou,
+                val_iou=val_iou,
+                best_val_iou=best_val_iou,
                 config=config,
                 scheduler=scheduler,
                 seed=seed,
