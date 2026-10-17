@@ -1,0 +1,38 @@
+model:
+  name: "transattunet"
+  in_channels: 3
+  num_classes: 1
+  bilinear: true
+  use_efficient_gsa: true
+
+data:
+  image_size: 256
+  train_split: "data/splits/train.json"
+  val_split: "data/splits/val.json"
+  batch_size: 4
+  num_workers: 0
+
+training:
+  epochs: 30
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  seed: 42
+  device: "auto"
+
+loss:
+  name: "dice_bce"
+  bce_weight: 1.0
+  dice_weight: 1.0
+
+checkpoint:
+  directory: "checkpoints/phase3_efficient_gsa"
+  save_best_only: true
+  best_filename: "transattunet_efficient_gsa_best.pth"
+  latest_filename: "transattunet_efficient_gsa_latest.pth"
+
+logging:
+  log_dir: "results/phase3_efficient_gsa/logs"
+  figures_dir: "results/phase3_efficient_gsa/figures"
+  metrics_json: "results/phase3_efficient_gsa/logs/train_metrics.json"
+  metrics_csv: "results/phase3_efficient_gsa/logs/train_metrics.csv"
+  plot_path: "results/phase3_efficient_gsa/figures/training_curves.png"

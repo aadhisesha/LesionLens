@@ -138,6 +138,43 @@ class PAM_Module(nn.Module):
         return out
 
 
+
+class EfficientGlobalContextAttention(nn.Module):
+    """Global spatial attention with pooled keys and values."""
+
+    def __init__(self, in_dim: int, context_size: int = 4):
+        super().__init__()
+        if in_dim < 8 or context_size < 1:
+            raise ValueError("in_dim must be >= 8 and context_size >= 1")
+
+        self.context_size = context_size
+        self.query_conv = nn.Conv2d(in_dim, in_dim // 8, kernel_size=1)
+        self.key_conv = nn.Conv2d(in_dim, in_dim // 8, kernel_size=1)
+        self.value_conv = nn.Conv2d(in_dim, in_dim, kernel_size=1)
+        self.gamma = nn.Parameter(torch.zeros(1))
+        self.softmax = nn.Softmax(dim=-1)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        batch, channels, height, width = x.shape
+
+        context = F.adaptive_avg_pool2d(
+            x,
+            (min(self.context_size, height), min(self.context_size, width)),
+        )
+
+        query = self.query_conv(x).flatten(2).transpose(1, 2)
+        key = self.key_conv(context).flatten(2)
+        value = self.value_conv(context).flatten(2)
+
+        attention = self.softmax(
+            torch.bmm(query, key) * (query.shape[-1] ** -0.5)
+        )
+        output = torch.bmm(value, attention.transpose(1, 2))
+        output = output.reshape(batch, channels, height, width)
+
+        return x + self.gamma * output
+
+
 class PositionEmbeddingLearned(nn.Module):
     """Learned 2D positional embedding for the bottleneck feature map."""
 
@@ -224,6 +261,7 @@ class TransAttUNet(nn.Module):
         in_channels: int = 3,
         num_classes: int = 1,
         bilinear: bool = True,
+        use_efficient_gsa: bool = False,
         **kwargs,
     ):
         super().__init__()
@@ -234,6 +272,7 @@ class TransAttUNet(nn.Module):
         self.in_channels = n_channels
         self.num_classes = n_classes
         self.bilinear = bilinear
+        self.use_efficient_gsa = bool(use_efficient_gsa)
 
         factor = 2 if bilinear else 1
 
@@ -256,7 +295,11 @@ class TransAttUNet(nn.Module):
         # Self-Aware Attention (SAA) Bridge
         bottleneck_channels = 1024 // factor
         self.pos = PositionEmbeddingLearned(num_pos_feats=bottleneck_channels // 2, len_embedding=64)
-        self.pam = PAM_Module(bottleneck_channels)
+        self.pam = (
+            EfficientGlobalContextAttention(bottleneck_channels)
+            if self.use_efficient_gsa
+            else PAM_Module(bottleneck_channels)
+        )
         self.sdpa = ScaledDotProductAttention(bottleneck_channels)
 
 
