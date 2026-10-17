@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-10-11T11:48:58.382276",
+  "overall_status": "PASSED",
+  "checks": {
+    "manifests_exist": true,
+    "sample_counts": {
+      "train_samples": 720,
+      "val_samples": 180,
+      "total_train_val": 900,
+      "expected_total_train": 900,
+      "test_samples": 379,
+      "expected_test": 379,
+      "split_train_match": true,
+      "split_val_match": true,
+      "test_match": true
+    },
+    "no_train_duplicates": true,
+    "no_val_duplicates": true,
+    "no_test_duplicates": true,
+    "train_val_disjoint": true,
+    "train_test_disjoint": true,
+    "val_test_disjoint": true,
+    "corrupted_files_count": 0,
+    "dimension_mismatches_count": 0,
+    "non_binary_masks_count": 0,
+    "dataloader_smoke_tests": {
+      "train": {
+        "status": "PASSED",
+        "batch_size": 4,
+        "image_shape": [
+          4,
+          3,
+          256,
+          256
+        ],
+        "mask_shape": [
+          4,
+          1,
+          256,
+          256
+        ]
+      },
+      "val": {
+        "status": "PASSED",
+        "batch_size": 4,
+        "image_shape": [
+          4,
+          3,
+          256,
+          256
+        ],
+        "mask_shape": [
+          4,
+          1,
+          256,
+          256
+        ]
+      },
+      "test": {
+        "status": "PASSED",
+        "batch_size": 4,
+        "image_shape": [
+          4,
+          3,
+          256,
+          256
+        ],
+        "mask_shape": [
+          4,
+          1,
+          256,
+          256
+        ]
+      }
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

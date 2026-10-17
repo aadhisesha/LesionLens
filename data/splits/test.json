@@ -1,0 +1,1952 @@
+{
+  "metadata": {
+    "split": "test",
+    "dataset_name": "ISIC Challenge",
+    "year": 2016,
+    "task": "Task 1: Lesion Boundary Segmentation",
+    "num_samples": 379,
+    "random_seed": 42,
+    "created_at": "2026-10-11T11:48:58.367837",
+    "preprocessing": {
+      "target_height": 256,
+      "target_width": 256,
+      "image_interpolation": "bilinear",
+      "mask_interpolation": "nearest",
+      "image_normalization": {
+        "scale_range": [
+          0.0,
+          1.0
+        ],
+        "apply_standardization": false,
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "mask_binarization": {
+        "threshold": 128,
+        "expected_labels": [
+          0,
+          1
+        ]
+      },
+      "supported_image_extensions": [
+        ".jpg",
+        ".jpeg",
+        ".png"
+      ],
+      "supported_mask_extensions": [
+        ".png"
+      ],
+      "mask_suffix_patterns": [
+        "_Segmentation",
+        "_segmentation",
+        "_Segmentation.png",
+        "_segmentation.png"
+      ]
+    }
+  },
+  "samples": [
+    {
+      "id": "ISIC_0000003",
+      "image_path": "data/processed/test_images/ISIC_0000003.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000003_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000012",
+      "image_path": "data/processed/test_images/ISIC_0000012.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000012_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000013",
+      "image_path": "data/processed/test_images/ISIC_0000013.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000013_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000014",
+      "image_path": "data/processed/test_images/ISIC_0000014.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000014_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000015",
+      "image_path": "data/processed/test_images/ISIC_0000015.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000015_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000020",
+      "image_path": "data/processed/test_images/ISIC_0000020.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000020_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000022",
+      "image_path": "data/processed/test_images/ISIC_0000022.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000022_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000023",
+      "image_path": "data/processed/test_images/ISIC_0000023.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000023_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000027",
+      "image_path": "data/processed/test_images/ISIC_0000027.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000027_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000036",
+      "image_path": "data/processed/test_images/ISIC_0000036.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000036_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000037",
+      "image_path": "data/processed/test_images/ISIC_0000037.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000037_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000040",
+      "image_path": "data/processed/test_images/ISIC_0000040.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000040_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000043",
+      "image_path": "data/processed/test_images/ISIC_0000043.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000043_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000052",
+      "image_path": "data/processed/test_images/ISIC_0000052.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000052_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000053",
+      "image_path": "data/processed/test_images/ISIC_0000053.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000053_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000056",
+      "image_path": "data/processed/test_images/ISIC_0000056.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000056_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000057",
+      "image_path": "data/processed/test_images/ISIC_0000057.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000057_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000064",
+      "image_path": "data/processed/test_images/ISIC_0000064.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000064_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000066",
+      "image_path": "data/processed/test_images/ISIC_0000066.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000066_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000069",
+      "image_path": "data/processed/test_images/ISIC_0000069.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000069_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000071",
+      "image_path": "data/processed/test_images/ISIC_0000071.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000071_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000072",
+      "image_path": "data/processed/test_images/ISIC_0000072.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000072_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000088",
+      "image_path": "data/processed/test_images/ISIC_0000088.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000088_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000092",
+      "image_path": "data/processed/test_images/ISIC_0000092.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000092_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000098",
+      "image_path": "data/processed/test_images/ISIC_0000098.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000098_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000099",
+      "image_path": "data/processed/test_images/ISIC_0000099.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000099_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000101",
+      "image_path": "data/processed/test_images/ISIC_0000101.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000101_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000107",
+      "image_path": "data/processed/test_images/ISIC_0000107.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000107_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000111",
+      "image_path": "data/processed/test_images/ISIC_0000111.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000111_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000113",
+      "image_path": "data/processed/test_images/ISIC_0000113.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000113_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000115",
+      "image_path": "data/processed/test_images/ISIC_0000115.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000115_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000117",
+      "image_path": "data/processed/test_images/ISIC_0000117.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000117_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000125",
+      "image_path": "data/processed/test_images/ISIC_0000125.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000125_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000126",
+      "image_path": "data/processed/test_images/ISIC_0000126.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000126_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000129",
+      "image_path": "data/processed/test_images/ISIC_0000129.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000129_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000132",
+      "image_path": "data/processed/test_images/ISIC_0000132.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000132_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000136",
+      "image_path": "data/processed/test_images/ISIC_0000136.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000136_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000138",
+      "image_path": "data/processed/test_images/ISIC_0000138.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000138_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000141",
+      "image_path": "data/processed/test_images/ISIC_0000141.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000141_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000149",
+      "image_path": "data/processed/test_images/ISIC_0000149.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000149_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000160",
+      "image_path": "data/processed/test_images/ISIC_0000160.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000160_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000161",
+      "image_path": "data/processed/test_images/ISIC_0000161.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000161_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000164",
+      "image_path": "data/processed/test_images/ISIC_0000164.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000164_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000165",
+      "image_path": "data/processed/test_images/ISIC_0000165.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000165_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000169",
+      "image_path": "data/processed/test_images/ISIC_0000169.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000169_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000172",
+      "image_path": "data/processed/test_images/ISIC_0000172.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000172_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000174",
+      "image_path": "data/processed/test_images/ISIC_0000174.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000174_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000177",
+      "image_path": "data/processed/test_images/ISIC_0000177.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000177_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000188",
+      "image_path": "data/processed/test_images/ISIC_0000188.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000188_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000195",
+      "image_path": "data/processed/test_images/ISIC_0000195.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000195_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000196",
+      "image_path": "data/processed/test_images/ISIC_0000196.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000196_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000197",
+      "image_path": "data/processed/test_images/ISIC_0000197.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000197_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000198",
+      "image_path": "data/processed/test_images/ISIC_0000198.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000198_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000200",
+      "image_path": "data/processed/test_images/ISIC_0000200.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000200_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000201",
+      "image_path": "data/processed/test_images/ISIC_0000201.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000201_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000202",
+      "image_path": "data/processed/test_images/ISIC_0000202.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000202_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000212",
+      "image_path": "data/processed/test_images/ISIC_0000212.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000212_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000213",
+      "image_path": "data/processed/test_images/ISIC_0000213.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000213_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000222",
+      "image_path": "data/processed/test_images/ISIC_0000222.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000222_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000226",
+      "image_path": "data/processed/test_images/ISIC_0000226.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000226_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000227",
+      "image_path": "data/processed/test_images/ISIC_0000227.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000227_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000228",
+      "image_path": "data/processed/test_images/ISIC_0000228.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000228_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000230",
+      "image_path": "data/processed/test_images/ISIC_0000230.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000230_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000231",
+      "image_path": "data/processed/test_images/ISIC_0000231.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000231_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000233",
+      "image_path": "data/processed/test_images/ISIC_0000233.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000233_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000234",
+      "image_path": "data/processed/test_images/ISIC_0000234.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000234_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000246",
+      "image_path": "data/processed/test_images/ISIC_0000246.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000246_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000253",
+      "image_path": "data/processed/test_images/ISIC_0000253.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000253_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000254",
+      "image_path": "data/processed/test_images/ISIC_0000254.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000254_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000257",
+      "image_path": "data/processed/test_images/ISIC_0000257.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000257_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000258",
+      "image_path": "data/processed/test_images/ISIC_0000258.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000258_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000271",
+      "image_path": "data/processed/test_images/ISIC_0000271.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000271_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000279",
+      "image_path": "data/processed/test_images/ISIC_0000279.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000279_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000287",
+      "image_path": "data/processed/test_images/ISIC_0000287.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000287_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000289",
+      "image_path": "data/processed/test_images/ISIC_0000289.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000289_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000298",
+      "image_path": "data/processed/test_images/ISIC_0000298.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000298_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000299",
+      "image_path": "data/processed/test_images/ISIC_0000299.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000299_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000302",
+      "image_path": "data/processed/test_images/ISIC_0000302.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000302_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000306",
+      "image_path": "data/processed/test_images/ISIC_0000306.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000306_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000310",
+      "image_path": "data/processed/test_images/ISIC_0000310.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000310_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000311",
+      "image_path": "data/processed/test_images/ISIC_0000311.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000311_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000319",
+      "image_path": "data/processed/test_images/ISIC_0000319.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000319_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000320",
+      "image_path": "data/processed/test_images/ISIC_0000320.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000320_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000325",
+      "image_path": "data/processed/test_images/ISIC_0000325.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000325_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000327",
+      "image_path": "data/processed/test_images/ISIC_0000327.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000327_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000328",
+      "image_path": "data/processed/test_images/ISIC_0000328.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000328_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000340",
+      "image_path": "data/processed/test_images/ISIC_0000340.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000340_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000343",
+      "image_path": "data/processed/test_images/ISIC_0000343.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000343_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000354",
+      "image_path": "data/processed/test_images/ISIC_0000354.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000354_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000357",
+      "image_path": "data/processed/test_images/ISIC_0000357.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000357_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000368",
+      "image_path": "data/processed/test_images/ISIC_0000368.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000368_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000371",
+      "image_path": "data/processed/test_images/ISIC_0000371.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000371_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000377",
+      "image_path": "data/processed/test_images/ISIC_0000377.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000377_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000378",
+      "image_path": "data/processed/test_images/ISIC_0000378.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000378_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000380",
+      "image_path": "data/processed/test_images/ISIC_0000380.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000380_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000388",
+      "image_path": "data/processed/test_images/ISIC_0000388.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000388_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000392",
+      "image_path": "data/processed/test_images/ISIC_0000392.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000392_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000393",
+      "image_path": "data/processed/test_images/ISIC_0000393.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000393_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000407",
+      "image_path": "data/processed/test_images/ISIC_0000407.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000407_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000418",
+      "image_path": "data/processed/test_images/ISIC_0000418.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000418_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000420",
+      "image_path": "data/processed/test_images/ISIC_0000420.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000420_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000433",
+      "image_path": "data/processed/test_images/ISIC_0000433.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000433_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000448",
+      "image_path": "data/processed/test_images/ISIC_0000448.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000448_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000449",
+      "image_path": "data/processed/test_images/ISIC_0000449.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000449_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000456",
+      "image_path": "data/processed/test_images/ISIC_0000456.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000456_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000466",
+      "image_path": "data/processed/test_images/ISIC_0000466.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000466_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000470",
+      "image_path": "data/processed/test_images/ISIC_0000470.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000470_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000476",
+      "image_path": "data/processed/test_images/ISIC_0000476.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000476_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000479",
+      "image_path": "data/processed/test_images/ISIC_0000479.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000479_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000482",
+      "image_path": "data/processed/test_images/ISIC_0000482.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000482_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000484",
+      "image_path": "data/processed/test_images/ISIC_0000484.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000484_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000487",
+      "image_path": "data/processed/test_images/ISIC_0000487.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000487_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000490",
+      "image_path": "data/processed/test_images/ISIC_0000490.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000490_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000494",
+      "image_path": "data/processed/test_images/ISIC_0000494.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000494_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000499",
+      "image_path": "data/processed/test_images/ISIC_0000499.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000499_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000501",
+      "image_path": "data/processed/test_images/ISIC_0000501.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000501_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000508",
+      "image_path": "data/processed/test_images/ISIC_0000508.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000508_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000509",
+      "image_path": "data/processed/test_images/ISIC_0000509.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000509_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000510",
+      "image_path": "data/processed/test_images/ISIC_0000510.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000510_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000515",
+      "image_path": "data/processed/test_images/ISIC_0000515.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000515_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000518",
+      "image_path": "data/processed/test_images/ISIC_0000518.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000518_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000525",
+      "image_path": "data/processed/test_images/ISIC_0000525.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000525_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000527",
+      "image_path": "data/processed/test_images/ISIC_0000527.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000527_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000533",
+      "image_path": "data/processed/test_images/ISIC_0000533.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000533_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000534",
+      "image_path": "data/processed/test_images/ISIC_0000534.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000534_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000537",
+      "image_path": "data/processed/test_images/ISIC_0000537.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000537_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000539",
+      "image_path": "data/processed/test_images/ISIC_0000539.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000539_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000540",
+      "image_path": "data/processed/test_images/ISIC_0000540.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000540_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000547",
+      "image_path": "data/processed/test_images/ISIC_0000547.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000547_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000549",
+      "image_path": "data/processed/test_images/ISIC_0000549.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000549_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0000550",
+      "image_path": "data/processed/test_images/ISIC_0000550.png",
+      "mask_path": "data/processed/test_masks/ISIC_0000550_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001100",
+      "image_path": "data/processed/test_images/ISIC_0001100.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001100_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001103",
+      "image_path": "data/processed/test_images/ISIC_0001103.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001103_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001128",
+      "image_path": "data/processed/test_images/ISIC_0001128.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001128_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001131",
+      "image_path": "data/processed/test_images/ISIC_0001131.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001131_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001142",
+      "image_path": "data/processed/test_images/ISIC_0001142.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001142_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001181",
+      "image_path": "data/processed/test_images/ISIC_0001181.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001181_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001185",
+      "image_path": "data/processed/test_images/ISIC_0001185.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001185_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001186",
+      "image_path": "data/processed/test_images/ISIC_0001186.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001186_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001190",
+      "image_path": "data/processed/test_images/ISIC_0001190.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001190_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001204",
+      "image_path": "data/processed/test_images/ISIC_0001204.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001204_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001242",
+      "image_path": "data/processed/test_images/ISIC_0001242.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001242_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001299",
+      "image_path": "data/processed/test_images/ISIC_0001299.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001299_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001427",
+      "image_path": "data/processed/test_images/ISIC_0001427.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001427_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001484",
+      "image_path": "data/processed/test_images/ISIC_0001484.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001484_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001685",
+      "image_path": "data/processed/test_images/ISIC_0001685.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001685_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0001960",
+      "image_path": "data/processed/test_images/ISIC_0001960.png",
+      "mask_path": "data/processed/test_masks/ISIC_0001960_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002107",
+      "image_path": "data/processed/test_images/ISIC_0002107.png",
+      "mask_path": "data/processed/test_masks/ISIC_0002107_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002246",
+      "image_path": "data/processed/test_images/ISIC_0002246.png",
+      "mask_path": "data/processed/test_masks/ISIC_0002246_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002673",
+      "image_path": "data/processed/test_images/ISIC_0002673.png",
+      "mask_path": "data/processed/test_masks/ISIC_0002673_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002829",
+      "image_path": "data/processed/test_images/ISIC_0002829.png",
+      "mask_path": "data/processed/test_masks/ISIC_0002829_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0002871",
+      "image_path": "data/processed/test_images/ISIC_0002871.png",
+      "mask_path": "data/processed/test_masks/ISIC_0002871_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0003056",
+      "image_path": "data/processed/test_images/ISIC_0003056.png",
+      "mask_path": "data/processed/test_masks/ISIC_0003056_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0003559",
+      "image_path": "data/processed/test_images/ISIC_0003559.png",
+      "mask_path": "data/processed/test_masks/ISIC_0003559_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0003728",
+      "image_path": "data/processed/test_images/ISIC_0003728.png",
+      "mask_path": "data/processed/test_masks/ISIC_0003728_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0004115",
+      "image_path": "data/processed/test_images/ISIC_0004115.png",
+      "mask_path": "data/processed/test_masks/ISIC_0004115_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0004346",
+      "image_path": "data/processed/test_images/ISIC_0004346.png",
+      "mask_path": "data/processed/test_masks/ISIC_0004346_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0005000",
+      "image_path": "data/processed/test_images/ISIC_0005000.png",
+      "mask_path": "data/processed/test_masks/ISIC_0005000_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0006193",
+      "image_path": "data/processed/test_images/ISIC_0006193.png",
+      "mask_path": "data/processed/test_masks/ISIC_0006193_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0006711",
+      "image_path": "data/processed/test_images/ISIC_0006711.png",
+      "mask_path": "data/processed/test_masks/ISIC_0006711_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0007322",
+      "image_path": "data/processed/test_images/ISIC_0007322.png",
+      "mask_path": "data/processed/test_masks/ISIC_0007322_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0007693",
+      "image_path": "data/processed/test_images/ISIC_0007693.png",
+      "mask_path": "data/processed/test_masks/ISIC_0007693_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008116",
+      "image_path": "data/processed/test_images/ISIC_0008116.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008116_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008207",
+      "image_path": "data/processed/test_images/ISIC_0008207.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008207_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008406",
+      "image_path": "data/processed/test_images/ISIC_0008406.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008406_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008507",
+      "image_path": "data/processed/test_images/ISIC_0008507.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008507_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008600",
+      "image_path": "data/processed/test_images/ISIC_0008600.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008600_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008626",
+      "image_path": "data/processed/test_images/ISIC_0008626.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008626_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008659",
+      "image_path": "data/processed/test_images/ISIC_0008659.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008659_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008992",
+      "image_path": "data/processed/test_images/ISIC_0008992.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008992_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0008998",
+      "image_path": "data/processed/test_images/ISIC_0008998.png",
+      "mask_path": "data/processed/test_masks/ISIC_0008998_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009035",
+      "image_path": "data/processed/test_images/ISIC_0009035.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009035_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009078",
+      "image_path": "data/processed/test_images/ISIC_0009078.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009078_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009083",
+      "image_path": "data/processed/test_images/ISIC_0009083.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009083_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009201",
+      "image_path": "data/processed/test_images/ISIC_0009201.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009201_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009298",
+      "image_path": "data/processed/test_images/ISIC_0009298.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009298_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009564",
+      "image_path": "data/processed/test_images/ISIC_0009564.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009564_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009869",
+      "image_path": "data/processed/test_images/ISIC_0009869.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009869_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009872",
+      "image_path": "data/processed/test_images/ISIC_0009872.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009872_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009874",
+      "image_path": "data/processed/test_images/ISIC_0009874.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009874_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009879",
+      "image_path": "data/processed/test_images/ISIC_0009879.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009879_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009880",
+      "image_path": "data/processed/test_images/ISIC_0009880.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009880_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009881",
+      "image_path": "data/processed/test_images/ISIC_0009881.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009881_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009882",
+      "image_path": "data/processed/test_images/ISIC_0009882.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009882_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009885",
+      "image_path": "data/processed/test_images/ISIC_0009885.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009885_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009889",
+      "image_path": "data/processed/test_images/ISIC_0009889.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009889_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009891",
+      "image_path": "data/processed/test_images/ISIC_0009891.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009891_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009898",
+      "image_path": "data/processed/test_images/ISIC_0009898.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009898_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009901",
+      "image_path": "data/processed/test_images/ISIC_0009901.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009901_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009902",
+      "image_path": "data/processed/test_images/ISIC_0009902.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009902_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009906",
+      "image_path": "data/processed/test_images/ISIC_0009906.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009906_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009918",
+      "image_path": "data/processed/test_images/ISIC_0009918.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009918_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009920",
+      "image_path": "data/processed/test_images/ISIC_0009920.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009920_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009923",
+      "image_path": "data/processed/test_images/ISIC_0009923.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009923_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009926",
+      "image_path": "data/processed/test_images/ISIC_0009926.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009926_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009927",
+      "image_path": "data/processed/test_images/ISIC_0009927.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009927_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009928",
+      "image_path": "data/processed/test_images/ISIC_0009928.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009928_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009930",
+      "image_path": "data/processed/test_images/ISIC_0009930.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009930_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009931",
+      "image_path": "data/processed/test_images/ISIC_0009931.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009931_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009943",
+      "image_path": "data/processed/test_images/ISIC_0009943.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009943_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009945",
+      "image_path": "data/processed/test_images/ISIC_0009945.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009945_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009946",
+      "image_path": "data/processed/test_images/ISIC_0009946.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009946_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009948",
+      "image_path": "data/processed/test_images/ISIC_0009948.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009948_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009954",
+      "image_path": "data/processed/test_images/ISIC_0009954.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009954_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009955",
+      "image_path": "data/processed/test_images/ISIC_0009955.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009955_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009956",
+      "image_path": "data/processed/test_images/ISIC_0009956.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009956_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009958",
+      "image_path": "data/processed/test_images/ISIC_0009958.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009958_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009959",
+      "image_path": "data/processed/test_images/ISIC_0009959.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009959_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009965",
+      "image_path": "data/processed/test_images/ISIC_0009965.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009965_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009970",
+      "image_path": "data/processed/test_images/ISIC_0009970.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009970_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009977",
+      "image_path": "data/processed/test_images/ISIC_0009977.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009977_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009980",
+      "image_path": "data/processed/test_images/ISIC_0009980.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009980_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009982",
+      "image_path": "data/processed/test_images/ISIC_0009982.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009982_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009988",
+      "image_path": "data/processed/test_images/ISIC_0009988.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009988_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009990",
+      "image_path": "data/processed/test_images/ISIC_0009990.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009990_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009992",
+      "image_path": "data/processed/test_images/ISIC_0009992.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009992_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009993",
+      "image_path": "data/processed/test_images/ISIC_0009993.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009993_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009994",
+      "image_path": "data/processed/test_images/ISIC_0009994.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009994_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0009998",
+      "image_path": "data/processed/test_images/ISIC_0009998.png",
+      "mask_path": "data/processed/test_masks/ISIC_0009998_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010004",
+      "image_path": "data/processed/test_images/ISIC_0010004.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010004_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010009",
+      "image_path": "data/processed/test_images/ISIC_0010009.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010009_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010011",
+      "image_path": "data/processed/test_images/ISIC_0010011.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010011_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010013",
+      "image_path": "data/processed/test_images/ISIC_0010013.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010013_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010016",
+      "image_path": "data/processed/test_images/ISIC_0010016.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010016_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010018",
+      "image_path": "data/processed/test_images/ISIC_0010018.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010018_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010020",
+      "image_path": "data/processed/test_images/ISIC_0010020.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010020_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010023",
+      "image_path": "data/processed/test_images/ISIC_0010023.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010023_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010028",
+      "image_path": "data/processed/test_images/ISIC_0010028.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010028_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010033",
+      "image_path": "data/processed/test_images/ISIC_0010033.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010033_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010034",
+      "image_path": "data/processed/test_images/ISIC_0010034.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010034_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010037",
+      "image_path": "data/processed/test_images/ISIC_0010037.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010037_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010038",
+      "image_path": "data/processed/test_images/ISIC_0010038.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010038_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010041",
+      "image_path": "data/processed/test_images/ISIC_0010041.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010041_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010047",
+      "image_path": "data/processed/test_images/ISIC_0010047.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010047_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010055",
+      "image_path": "data/processed/test_images/ISIC_0010055.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010055_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010058",
+      "image_path": "data/processed/test_images/ISIC_0010058.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010058_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010059",
+      "image_path": "data/processed/test_images/ISIC_0010059.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010059_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010061",
+      "image_path": "data/processed/test_images/ISIC_0010061.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010061_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010062",
+      "image_path": "data/processed/test_images/ISIC_0010062.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010062_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010073",
+      "image_path": "data/processed/test_images/ISIC_0010073.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010073_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010077",
+      "image_path": "data/processed/test_images/ISIC_0010077.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010077_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010088",
+      "image_path": "data/processed/test_images/ISIC_0010088.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010088_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010089",
+      "image_path": "data/processed/test_images/ISIC_0010089.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010089_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010092",
+      "image_path": "data/processed/test_images/ISIC_0010092.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010092_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010100",
+      "image_path": "data/processed/test_images/ISIC_0010100.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010100_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010103",
+      "image_path": "data/processed/test_images/ISIC_0010103.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010103_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010171",
+      "image_path": "data/processed/test_images/ISIC_0010171.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010171_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010173",
+      "image_path": "data/processed/test_images/ISIC_0010173.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010173_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010175",
+      "image_path": "data/processed/test_images/ISIC_0010175.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010175_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010180",
+      "image_path": "data/processed/test_images/ISIC_0010180.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010180_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010183",
+      "image_path": "data/processed/test_images/ISIC_0010183.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010183_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010187",
+      "image_path": "data/processed/test_images/ISIC_0010187.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010187_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010190",
+      "image_path": "data/processed/test_images/ISIC_0010190.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010190_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010192",
+      "image_path": "data/processed/test_images/ISIC_0010192.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010192_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010193",
+      "image_path": "data/processed/test_images/ISIC_0010193.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010193_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010201",
+      "image_path": "data/processed/test_images/ISIC_0010201.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010201_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010202",
+      "image_path": "data/processed/test_images/ISIC_0010202.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010202_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010206",
+      "image_path": "data/processed/test_images/ISIC_0010206.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010206_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010207",
+      "image_path": "data/processed/test_images/ISIC_0010207.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010207_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010215",
+      "image_path": "data/processed/test_images/ISIC_0010215.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010215_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010216",
+      "image_path": "data/processed/test_images/ISIC_0010216.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010216_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010229",
+      "image_path": "data/processed/test_images/ISIC_0010229.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010229_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010231",
+      "image_path": "data/processed/test_images/ISIC_0010231.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010231_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010234",
+      "image_path": "data/processed/test_images/ISIC_0010234.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010234_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010238",
+      "image_path": "data/processed/test_images/ISIC_0010238.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010238_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010254",
+      "image_path": "data/processed/test_images/ISIC_0010254.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010254_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010255",
+      "image_path": "data/processed/test_images/ISIC_0010255.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010255_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010257",
+      "image_path": "data/processed/test_images/ISIC_0010257.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010257_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010261",
+      "image_path": "data/processed/test_images/ISIC_0010261.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010261_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010326",
+      "image_path": "data/processed/test_images/ISIC_0010326.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010326_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010331",
+      "image_path": "data/processed/test_images/ISIC_0010331.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010331_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010336",
+      "image_path": "data/processed/test_images/ISIC_0010336.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010336_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010340",
+      "image_path": "data/processed/test_images/ISIC_0010340.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010340_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010346",
+      "image_path": "data/processed/test_images/ISIC_0010346.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010346_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010347",
+      "image_path": "data/processed/test_images/ISIC_0010347.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010347_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010348",
+      "image_path": "data/processed/test_images/ISIC_0010348.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010348_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010360",
+      "image_path": "data/processed/test_images/ISIC_0010360.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010360_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010368",
+      "image_path": "data/processed/test_images/ISIC_0010368.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010368_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010369",
+      "image_path": "data/processed/test_images/ISIC_0010369.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010369_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010373",
+      "image_path": "data/processed/test_images/ISIC_0010373.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010373_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010374",
+      "image_path": "data/processed/test_images/ISIC_0010374.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010374_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010377",
+      "image_path": "data/processed/test_images/ISIC_0010377.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010377_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010378",
+      "image_path": "data/processed/test_images/ISIC_0010378.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010378_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010379",
+      "image_path": "data/processed/test_images/ISIC_0010379.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010379_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010437",
+      "image_path": "data/processed/test_images/ISIC_0010437.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010437_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010444",
+      "image_path": "data/processed/test_images/ISIC_0010444.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010444_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010448",
+      "image_path": "data/processed/test_images/ISIC_0010448.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010448_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010449",
+      "image_path": "data/processed/test_images/ISIC_0010449.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010449_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010451",
+      "image_path": "data/processed/test_images/ISIC_0010451.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010451_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010452",
+      "image_path": "data/processed/test_images/ISIC_0010452.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010452_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010454",
+      "image_path": "data/processed/test_images/ISIC_0010454.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010454_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010456",
+      "image_path": "data/processed/test_images/ISIC_0010456.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010456_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010460",
+      "image_path": "data/processed/test_images/ISIC_0010460.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010460_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010463",
+      "image_path": "data/processed/test_images/ISIC_0010463.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010463_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010474",
+      "image_path": "data/processed/test_images/ISIC_0010474.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010474_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010477",
+      "image_path": "data/processed/test_images/ISIC_0010477.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010477_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010483",
+      "image_path": "data/processed/test_images/ISIC_0010483.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010483_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010494",
+      "image_path": "data/processed/test_images/ISIC_0010494.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010494_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010498",
+      "image_path": "data/processed/test_images/ISIC_0010498.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010498_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010552",
+      "image_path": "data/processed/test_images/ISIC_0010552.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010552_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010553",
+      "image_path": "data/processed/test_images/ISIC_0010553.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010553_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010556",
+      "image_path": "data/processed/test_images/ISIC_0010556.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010556_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010565",
+      "image_path": "data/processed/test_images/ISIC_0010565.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010565_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010574",
+      "image_path": "data/processed/test_images/ISIC_0010574.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010574_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010582",
+      "image_path": "data/processed/test_images/ISIC_0010582.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010582_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010584",
+      "image_path": "data/processed/test_images/ISIC_0010584.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010584_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010587",
+      "image_path": "data/processed/test_images/ISIC_0010587.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010587_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010588",
+      "image_path": "data/processed/test_images/ISIC_0010588.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010588_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010591",
+      "image_path": "data/processed/test_images/ISIC_0010591.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010591_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010592",
+      "image_path": "data/processed/test_images/ISIC_0010592.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010592_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010596",
+      "image_path": "data/processed/test_images/ISIC_0010596.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010596_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010597",
+      "image_path": "data/processed/test_images/ISIC_0010597.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010597_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010598",
+      "image_path": "data/processed/test_images/ISIC_0010598.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010598_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010599",
+      "image_path": "data/processed/test_images/ISIC_0010599.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010599_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010604",
+      "image_path": "data/processed/test_images/ISIC_0010604.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010604_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010606",
+      "image_path": "data/processed/test_images/ISIC_0010606.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010606_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010607",
+      "image_path": "data/processed/test_images/ISIC_0010607.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010607_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010846",
+      "image_path": "data/processed/test_images/ISIC_0010846.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010846_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010847",
+      "image_path": "data/processed/test_images/ISIC_0010847.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010847_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010854",
+      "image_path": "data/processed/test_images/ISIC_0010854.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010854_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010856",
+      "image_path": "data/processed/test_images/ISIC_0010856.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010856_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0010863",
+      "image_path": "data/processed/test_images/ISIC_0010863.png",
+      "mask_path": "data/processed/test_masks/ISIC_0010863_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011080",
+      "image_path": "data/processed/test_images/ISIC_0011080.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011080_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011081",
+      "image_path": "data/processed/test_images/ISIC_0011081.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011081_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011083",
+      "image_path": "data/processed/test_images/ISIC_0011083.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011083_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011089",
+      "image_path": "data/processed/test_images/ISIC_0011089.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011089_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011090",
+      "image_path": "data/processed/test_images/ISIC_0011090.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011090_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011092",
+      "image_path": "data/processed/test_images/ISIC_0011092.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011092_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011098",
+      "image_path": "data/processed/test_images/ISIC_0011098.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011098_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011101",
+      "image_path": "data/processed/test_images/ISIC_0011101.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011101_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011104",
+      "image_path": "data/processed/test_images/ISIC_0011104.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011104_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011107",
+      "image_path": "data/processed/test_images/ISIC_0011107.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011107_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011110",
+      "image_path": "data/processed/test_images/ISIC_0011110.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011110_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011112",
+      "image_path": "data/processed/test_images/ISIC_0011112.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011112_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011122",
+      "image_path": "data/processed/test_images/ISIC_0011122.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011122_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011129",
+      "image_path": "data/processed/test_images/ISIC_0011129.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011129_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011132",
+      "image_path": "data/processed/test_images/ISIC_0011132.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011132_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011143",
+      "image_path": "data/processed/test_images/ISIC_0011143.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011143_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011148",
+      "image_path": "data/processed/test_images/ISIC_0011148.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011148_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011149",
+      "image_path": "data/processed/test_images/ISIC_0011149.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011149_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011150",
+      "image_path": "data/processed/test_images/ISIC_0011150.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011150_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011151",
+      "image_path": "data/processed/test_images/ISIC_0011151.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011151_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011152",
+      "image_path": "data/processed/test_images/ISIC_0011152.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011152_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011155",
+      "image_path": "data/processed/test_images/ISIC_0011155.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011155_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011162",
+      "image_path": "data/processed/test_images/ISIC_0011162.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011162_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011167",
+      "image_path": "data/processed/test_images/ISIC_0011167.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011167_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011168",
+      "image_path": "data/processed/test_images/ISIC_0011168.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011168_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011171",
+      "image_path": "data/processed/test_images/ISIC_0011171.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011171_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011172",
+      "image_path": "data/processed/test_images/ISIC_0011172.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011172_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011175",
+      "image_path": "data/processed/test_images/ISIC_0011175.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011175_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011176",
+      "image_path": "data/processed/test_images/ISIC_0011176.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011176_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011177",
+      "image_path": "data/processed/test_images/ISIC_0011177.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011177_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011204",
+      "image_path": "data/processed/test_images/ISIC_0011204.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011204_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011205",
+      "image_path": "data/processed/test_images/ISIC_0011205.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011205_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011213",
+      "image_path": "data/processed/test_images/ISIC_0011213.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011213_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011219",
+      "image_path": "data/processed/test_images/ISIC_0011219.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011219_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011224",
+      "image_path": "data/processed/test_images/ISIC_0011224.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011224_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011227",
+      "image_path": "data/processed/test_images/ISIC_0011227.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011227_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011292",
+      "image_path": "data/processed/test_images/ISIC_0011292.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011292_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011294",
+      "image_path": "data/processed/test_images/ISIC_0011294.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011294_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011298",
+      "image_path": "data/processed/test_images/ISIC_0011298.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011298_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011300",
+      "image_path": "data/processed/test_images/ISIC_0011300.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011300_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011305",
+      "image_path": "data/processed/test_images/ISIC_0011305.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011305_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011310",
+      "image_path": "data/processed/test_images/ISIC_0011310.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011310_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011319",
+      "image_path": "data/processed/test_images/ISIC_0011319.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011319_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011321",
+      "image_path": "data/processed/test_images/ISIC_0011321.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011321_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011325",
+      "image_path": "data/processed/test_images/ISIC_0011325.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011325_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011333",
+      "image_path": "data/processed/test_images/ISIC_0011333.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011333_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011336",
+      "image_path": "data/processed/test_images/ISIC_0011336.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011336_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011338",
+      "image_path": "data/processed/test_images/ISIC_0011338.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011338_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011344",
+      "image_path": "data/processed/test_images/ISIC_0011344.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011344_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011349",
+      "image_path": "data/processed/test_images/ISIC_0011349.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011349_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011359",
+      "image_path": "data/processed/test_images/ISIC_0011359.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011359_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011363",
+      "image_path": "data/processed/test_images/ISIC_0011363.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011363_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011367",
+      "image_path": "data/processed/test_images/ISIC_0011367.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011367_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011374",
+      "image_path": "data/processed/test_images/ISIC_0011374.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011374_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011384",
+      "image_path": "data/processed/test_images/ISIC_0011384.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011384_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011386",
+      "image_path": "data/processed/test_images/ISIC_0011386.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011386_Segmentation.png"
+    },
+    {
+      "id": "ISIC_0011392",
+      "image_path": "data/processed/test_images/ISIC_0011392.png",
+      "mask_path": "data/processed/test_masks/ISIC_0011392_Segmentation.png"
+    }
+  ]
+}
