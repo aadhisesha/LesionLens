@@ -5,7 +5,10 @@ import torch
 import torch.nn as nn
 from pathlib import Path
 
-from models.transattunet import TransAttUNet
+from models.transattunet import (
+    TransAttUNet,
+    EfficientGlobalContextAttention,
+)
 from models.model_factory import build_model
 from training.losses import CombinedBCEDiceLoss
 from data.dataset import get_dataloader
@@ -78,6 +81,33 @@ def test_model_factory_build():
     model_cfg = build_model(cfg)
     assert isinstance(model_cfg, TransAttUNet)
 
+
+
+
+def test_efficient_gsa_variant_forward_backward():
+    config = {
+        "model": {
+            "name": "transattunet",
+            "in_channels": 3,
+            "num_classes": 1,
+            "bilinear": True,
+            "use_efficient_gsa": True,
+        }
+    }
+    model = build_model(config)
+
+    assert isinstance(model.pam, EfficientGlobalContextAttention)
+    assert model.use_efficient_gsa is True
+
+    model.train()
+    logits = model(torch.randn(1, 3, 128, 128))
+    assert logits.shape == (1, 1, 128, 128)
+    assert torch.isfinite(logits).all()
+
+    logits.square().mean().backward()
+    assert model.pam.gamma.grad is not None
+    assert torch.isfinite(model.pam.gamma.grad).all()
+    assert model.outc.conv.weight.grad is not None
 
 @pytest.mark.integration
 def test_dataset_model_loss_integration():

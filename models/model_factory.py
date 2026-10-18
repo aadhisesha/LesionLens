@@ -25,15 +25,21 @@ def build_model(
     Returns:
         Instantiated PyTorch nn.Module.
     """
+    efficient_flag_override = kwargs.pop("use_efficient_gsa", None)
+
     if isinstance(config_or_name, dict):
         model_cfg = config_or_name.get("model", config_or_name)
         name = model_cfg.get("name", "transattunet").lower()
         in_channels = model_cfg.get("in_channels", in_channels)
         num_classes = model_cfg.get("num_classes", num_classes)
         bilinear = model_cfg.get("bilinear", True)
+        use_efficient_gsa = bool(model_cfg.get("use_efficient_gsa", False))
+        if efficient_flag_override is not None:
+            use_efficient_gsa = bool(efficient_flag_override)
     elif isinstance(config_or_name, str):
         name = config_or_name.lower()
         bilinear = kwargs.get("bilinear", True)
+        use_efficient_gsa = bool(efficient_flag_override or False)
     else:
         raise TypeError(f"Expected str or dict, got {type(config_or_name)}")
 
@@ -42,6 +48,7 @@ def build_model(
             in_channels=in_channels,
             num_classes=num_classes,
             bilinear=bilinear,
+            use_efficient_gsa=use_efficient_gsa,
             **kwargs,
         )
     else:
