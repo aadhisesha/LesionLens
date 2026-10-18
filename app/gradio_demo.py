@@ -187,9 +187,45 @@ def segment_image(image: Image.Image | None):
     )
 
 
+GLASS_CSS = """
+.gradio-container {
+    background-color: #080c14 !important;
+    background-image: radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 40%) !important;
+    color: #f8fafc !important;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+}
+.gr-box, .gr-panel, .gr-card, .block, .contain {
+    background: rgba(16, 24, 39, 0.68) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+}
+.gr-button-primary, button[variant="primary"] {
+    background: linear-gradient(135deg, #00f2fe, #0099ff) !important;
+    color: #05080f !important;
+    font-weight: 700 !important;
+    border: none !important;
+    box-shadow: 0 4px 20px rgba(0, 242, 254, 0.35) !important;
+    border-radius: 12px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+.gr-button-primary:hover, button[variant="primary"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 25px rgba(0, 242, 254, 0.55) !important;
+}
+"""
+
 with gr.Blocks(
-    title="LesionLens — Segmentation and TTA Uncertainty",
-    theme=gr.themes.Soft(),
+    title="LesionLens — Glass UI Segmentation & Uncertainty",
+    theme=gr.themes.Soft(
+        primary_hue="cyan",
+        secondary_hue="slate",
+        neutral_hue="slate",
+    ),
+    css=GLASS_CSS,
 ) as demo:
     gr.Markdown(
         """

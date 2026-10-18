@@ -54,6 +54,7 @@ data/processed/test_masks/*
 checkpoints/*.pt
 checkpoints/*.pth
 checkpoints/*.onnx
+checkpoints/phase3_efficient_gsa/*.pth
 !checkpoints/.gitkeep
 
 # Results / outputs

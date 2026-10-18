@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LesionLens — Glass UI Skin Lesion Segmentation & Morphological Profiler</title>
+  <meta name="description" content="State-of-the-art Glassmorphic clinical dermoscopy segmentation, uncertainty estimation, and ABCDE morphological analysis using TransAttUNet with Efficient GSA.">
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- Ambient background glow orbs -->
+  <div class="ambient-glow glow-cyan"></div>
+  <div class="ambient-glow glow-purple"></div>
+  <div class="ambient-glow glow-crimson"></div>
+
+  <!-- Header Navigation -->
+  <header class="glass-header">
+    <div class="header-content">
+      <div class="brand">
+        <div class="brand-icon">
+          <div class="pulse-ring"></div>
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"></path>
+            <circle cx="12" cy="9" r="2.5"></circle>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Lesion<span>Lens</span></h1>
+          <p class="tagline">Efficient-GSA TransAttUNet · Dermoscopic AI</p>
+        </div>
+      </div>
+
+      <div class="system-status">
+        <div class="status-pill" id="modelPill">
+          <span class="status-dot"></span>
+          <span class="status-label">Phase 3: Efficient-GSA Active</span>
+        </div>
+        <div class="chip" id="deviceChip">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+          <span id="deviceText">Loading...</span>
+        </div>
+        <div class="chip checkpoint-chip" id="ckptChip">
+          <span id="ckptText">best_epoch_26.pth</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <!-- Top Hero Banner -->
+    <section class="glass-card hero-card">
+      <div class="hero-left">
+        <h2>Clinical Skin Lesion Segmentation & Morphological Profiling</h2>
+        <p>Interactive medical imaging workspace equipped with Guided Self-Attention, Test-Time Augmentation (TTA) uncertainty mapping, and quantitative ABCDE dermatological descriptors.</p>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <div class="metric-val" id="modelParams">22.68M</div>
+          <div class="metric-lbl">Parameters</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <div class="metric-val">256 × 256</div>
+          <div class="metric-lbl">Resolution</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <div class="metric-val highlight" id="bestDiceVal">0.8171</div>
+          <div class="metric-lbl">Best Val Dice</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace Grid -->
+    <div class="workspace-grid">
+
+      <!-- Left Column: Upload, Presets & Controls -->
+      <aside class="left-panel">
+        
+        <!-- Preset Showcase -->
+        <div class="glass-card panel-card">
+          <div class="panel-header">
+            <h3>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              Quick Test Gallery
+            </h3>
+            <span class="badge-subtle">ISIC Test Set</span>
+          </div>
+          <p class="section-desc">Select a curated dermoscopic sample for instant 1-click analysis:</p>
+          <div class="presets-row" id="presetsRow">
+            <!-- Dynamically populated presets -->
+            <div class="preset-skeleton"></div>
+            <div class="preset-skeleton"></div>
+            <div class="preset-skeleton"></div>
+          </div>
+        </div>
+
+        <!-- Upload Glass Card -->
+        <div class="glass-card panel-card upload-card">
+          <div class="panel-header">
+            <h3>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              Upload Dermoscopy Image
+            </h3>
+          </div>
+
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/jpg" style="display: none;">
+            <div class="dropzone-content" id="dropzoneEmpty">
+              <div class="upload-icon-wrap">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.8" fill="none">
+                  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+                  <path d="M12 12v9"></path>
+                  <path d="m16 16-4-4-4 4"></path>
+                </svg>
+              </div>
+              <p class="drop-primary">Drag & drop lesion image here</p>
+              <p class="drop-secondary">or <span class="highlight-link">browse files</span> (JPG, PNG)</p>
+            </div>
+            
+            <!-- Upload Preview -->
+            <div class="dropzone-preview" id="dropzonePreview" style="display: none;">
+              <img id="previewImg" src="" alt="Selected Lesion Preview">
+              <button class="clear-btn" id="clearBtn" title="Remove image">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+              <div class="preview-meta" id="previewMeta">ISIC_sample.jpg</div>
+            </div>
+          </div>
+
+          <!-- Controls Section -->
+          <div class="controls-section">
+            <div class="control-group">
+              <div class="control-label-row">
+                <label for="thresholdSlider">Binarization Threshold</label>
+                <span class="slider-bubble" id="thresholdValue">0.50</span>
+              </div>
+              <input type="range" id="thresholdSlider" min="0.10" max="0.90" step="0.05" value="0.50" class="glass-slider">
+              <div class="slider-ticks">
+                <span>0.10 (High Recall)</span>
+                <span>0.50 (Standard)</span>
+                <span>0.90 (High Precision)</span>
+              </div>
+            </div>
+
+            <div class="control-group toggle-group">
+              <div class="toggle-text">
+                <span class="toggle-title">TTA Uncertainty Mapping</span>
+                <span class="toggle-subtitle">8-view symmetry ensemble for boundary disagreement</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="ttaToggle" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="btn-analyze" id="analyzeBtn" disabled>
+              <span class="btn-text">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Segment & Profile Lesion
+              </span>
+              <span class="btn-spinner" id="analyzeSpinner"></span>
+            </button>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Right Column: Visualizer Stage & ABCDE Diagnostics -->
+      <section class="right-panel">
+
+        <!-- Stage Placeholder when no analysis run -->
+        <div class="glass-card placeholder-stage" id="placeholderStage">
+          <div class="radar-pulse"></div>
+          <div class="placeholder-icon">
+            <svg viewBox="0 0 24 24" width="44" height="44" stroke="currentColor" stroke-width="1.5" fill="none">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+          </div>
+          <h3>Awaiting Dermoscopic Image</h3>
+          <p>Upload a skin lesion photograph or choose a sample from the test gallery on the left to initiate TransAttUNet segmentation and morphological analysis.</p>
+        </div>
+
+        <!-- Active Analysis Stage -->
+        <div class="analysis-stage" id="analysisStage" style="display: none;">
+
+          <!-- Visualizer Glass Card -->
+          <div class="glass-card visualizer-card">
+            
+            <div class="visualizer-header">
+              <div class="view-tabs" id="viewTabs">
+                <button class="view-tab active" data-view="split">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"></path></svg>
+                  Split Slider
+                </button>
+                <button class="view-tab" data-view="overlay">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path></svg>
+                  Red Overlay
+                </button>
+                <button class="view-tab" data-view="contour">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  Cyan Contour
+                </button>
+                <button class="view-tab" data-view="mask">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+                  Binary Mask
+                </button>
+                <button class="view-tab" data-view="probability_map">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                  Probability (Magma)
+                </button>
+                <button class="view-tab" data-view="uncertainty_map">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  TTA Disagreement
+                </button>
+                <button class="view-tab" data-view="lesion_crop">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M6 2v14a2 2 0 0 0 2 2h14"></path><path d="M18 22V8a2 2 0 0 0-2-2H2"></path></svg>
+                  Isolated Crop
+                </button>
+              </div>
+
+              <div class="runtime-tag" id="inferenceTimeTag">
+                <span>⏱️ 0.00s</span>
+              </div>
+            </div>
+
+            <!-- Visualizer Display Box -->
+            <div class="display-container">
+
+              <!-- View 1: Draggable Split Curtain Slider -->
+              <div class="split-slider-wrapper" id="splitViewContainer">
+                <div class="slider-layer layer-before">
+                  <img id="splitImgBefore" src="" alt="Raw Dermoscopy Image">
+                  <span class="layer-badge badge-left">Raw Dermoscopy</span>
+                </div>
+                <div class="slider-layer layer-after" id="splitLayerAfter">
+                  <img id="splitImgAfter" src="" alt="Segmented Boundary Overlay">
+                  <span class="layer-badge badge-right">Segmentation Overlay</span>
+                </div>
+                <div class="slider-handle" id="sliderHandle">
+                  <div class="handle-line"></div>
+                  <div class="handle-button">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M8 7l-5 5 5 5V7zm8 0v10l5-5-5-5z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 2: Single Layer View -->
+              <div class="single-image-wrapper" id="singleViewContainer" style="display: none;">
+                <img id="singleViewImg" src="" alt="Selected Layer View">
+                <div class="single-layer-badge" id="singleLayerCaption">Layer View</div>
+              </div>
+
+            </div>
+
+            <!-- Visualizer Bottom Status Bar -->
+            <div class="visualizer-footer">
+              <div class="coverage-bar-wrap">
+                <div class="coverage-label">
+                  <span>Lesion Coverage: <strong id="coverageText">0.0%</strong></span>
+                  <span class="dim" id="pixelCountText">0 / 0 pixels</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" id="coverageFill" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div class="export-actions">
+                <button class="btn-secondary" id="downloadMaskBtn" title="Download binary mask PNG">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Mask PNG
+                </button>
+                <button class="btn-secondary" id="downloadOverlayBtn" title="Download overlay PNG">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Overlay PNG
+                </button>
+                <button class="btn-secondary btn-glow" id="exportAuditBtn" title="Export full JSON morphological audit">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  Export Audit (JSON)
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ABCDE Clinical Morphological Assessment Dashboard -->
+          <div class="abcde-section">
+            <div class="section-title-row">
+              <h3>
+                <span class="neon-pill">Clinical Suite</span>
+                ABCDE Dermoscopic Morphological Descriptors
+              </h3>
+              <div class="risk-badge" id="riskBadge">
+                <span class="risk-dot"></span>
+                <span id="riskText">Evaluating...</span>
+              </div>
+            </div>
+
+            <div class="abcde-grid">
+              
+              <!-- Card A: Asymmetry -->
+              <div class="glass-card abcde-card" id="cardA">
+                <div class="card-top">
+                  <div class="letter-badge letter-a">A</div>
+                  <div class="card-header-text">
+                    <h4>Asymmetry Index</h4>
+                    <p>Biaxial Geometric Reflection</p>
+                  </div>
+                </div>
+                <div class="card-main-stat">
+                  <div class="stat-number" id="asymScore">0.0%</div>
+                  <div class="stat-sub">Symmetry Discrepancy</div>
+                </div>
+                <div class="card-breakdown">
+                  <div class="breakdown-row">
+                    <span>Horizontal Asymmetry:</span>
+                    <strong id="asymH">0.0%</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>Vertical Asymmetry:</span>
+                    <strong id="asymV">0.0%</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card B: Border -->
+              <div class="glass-card abcde-card" id="cardB">
+                <div class="card-top">
+                  <div class="letter-badge letter-b">B</div>
+                  <div class="card-header-text">
+                    <h4>Border Irregularity</h4>
+                    <p>Isoperimetric Compactness</p>
+                  </div>
+                </div>
+                <div class="card-main-stat">
+                  <div class="stat-number" id="borderScore">0.0%</div>
+                  <div class="stat-sub" id="borderLabel">Regular</div>
+                </div>
+                <div class="card-breakdown">
+                  <div class="breakdown-row">
+                    <span>Compactness ($4\pi A/P^2$):</span>
+                    <strong id="compactnessVal">0.000</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>Boundary Perimeter:</span>
+                    <strong id="perimeterVal">0 px</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card C: Color -->
+              <div class="glass-card abcde-card" id="cardC">
+                <div class="card-top">
+                  <div class="letter-badge letter-c">C</div>
+                  <div class="card-header-text">
+                    <h4>Color Variegation</h4>
+                    <p>Intra-Lesion RGB Variation</p>
+                  </div>
+                </div>
+                <div class="card-main-stat">
+                  <div class="stat-number" id="colorScore">0.0%</div>
+                  <div class="stat-sub">Variegation Index</div>
+                </div>
+                <div class="card-breakdown">
+                  <div class="breakdown-row">
+                    <span>RGB Variation (&sigma;):</span>
+                    <strong id="rgbStdVal">&plusmn;0.0</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>Detected Tones:</span>
+                    <span class="tones-tag" id="tonesVal">None</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card D: Diameter -->
+              <div class="glass-card abcde-card" id="cardD">
+                <div class="card-top">
+                  <div class="letter-badge letter-d">D</div>
+                  <div class="card-header-text">
+                    <h4>Diameter & Scale</h4>
+                    <p>Equivalent Geometric Diameter</p>
+                  </div>
+                </div>
+                <div class="card-main-stat">
+                  <div class="stat-number" id="diameterMm">0.0 mm</div>
+                  <div class="stat-sub">Estimated Physical Scale</div>
+                </div>
+                <div class="card-breakdown">
+                  <div class="breakdown-row">
+                    <span>Major Axis:</span>
+                    <strong id="majorAxisVal">0 px</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>Minor Axis:</span>
+                    <strong id="minorAxisVal">0 px</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card E: Evolution & Uncertainty -->
+              <div class="glass-card abcde-card" id="cardE">
+                <div class="card-top">
+                  <div class="letter-badge letter-e">E</div>
+                  <div class="card-header-text">
+                    <h4>TTA Disagreement</h4>
+                    <p>8-View Symmetry Heuristic</p>
+                  </div>
+                </div>
+                <div class="card-main-stat">
+                  <div class="stat-number" id="uncertScore">0.0%</div>
+                  <div class="stat-sub">Boundary Uncertainty</div>
+                </div>
+                <div class="card-breakdown">
+                  <div class="breakdown-row">
+                    <span>Disagreement &ge; 0.5:</span>
+                    <strong id="highUncertVal">0.0%</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>TTA Ensemble Views:</span>
+                    <strong id="ttaViewsVal">8 views</strong>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Clinical Advisory Disclaimer Box -->
+            <div class="glass-card advisory-card">
+              <div class="advisory-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              </div>
+              <div class="advisory-text">
+                <strong>Research & Educational Advisory:</strong>
+                <p id="advisoryDesc">LesionLens provides quantitative segmentation and morphological descriptors for investigational dermoscopy research. Disagreement maps reflect heuristic test-time augmentation variance and do not constitute a calibrated histological diagnosis or malignancy exclusion.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
