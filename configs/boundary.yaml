@@ -1,0 +1,20 @@
+# Boundary-Aware TransAttUNet Experiment Configuration (Phase 2 Placeholder)
+model:
+  name: "BoundaryAwareTransAttUNet"
+  in_channels: 3
+  num_classes: 1
+  base_channels: 48
+  image_size: 256
+  use_efficient_gsa: true
+  use_boundary_head: true
+
+training:
+  batch_size: 8
+  num_epochs: 100
+  learning_rate: 0.0001
+  optimizer: "adamw"
+  weight_decay: 0.0001
+  loss: "composite_boundary_dice_bce"
+
+data:
+  config: "configs/data.yaml"

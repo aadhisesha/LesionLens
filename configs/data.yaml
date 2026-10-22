@@ -1,0 +1,80 @@
+# Dataset configuration for ISIC 2016 Task 1 - Lesion Boundary Segmentation
+dataset:
+  name: "ISIC Challenge"
+  year: 2016
+  task: "Task 1: Lesion Boundary Segmentation"
+  official_url: "https://challenge.isic-archive.com/data/#2016"
+  archives:
+    train_images:
+      filename: "ISBI2016_ISIC_Part1_Training_Data.zip"
+      url: "https://isic-archive.s3.amazonaws.com/challenges/2016/ISBI2016_ISIC_Part1_Training_Data.zip"
+      approx_size_mb: 602
+      expected_count: 900
+      raw_target_dir: "data/raw/train_images"
+      processed_target_dir: "data/processed/train_images"
+    train_masks:
+      filename: "ISBI2016_ISIC_Part1_Training_GroundTruth.zip"
+      url: "https://isic-archive.s3.amazonaws.com/challenges/2016/ISBI2016_ISIC_Part1_Training_GroundTruth.zip"
+      approx_size_mb: 6
+      expected_count: 900
+      raw_target_dir: "data/raw/train_masks"
+      processed_target_dir: "data/processed/train_masks"
+    test_images:
+      filename: "ISBI2016_ISIC_Part1_Test_Data.zip"
+      url: "https://isic-archive.s3.amazonaws.com/challenges/2016/ISBI2016_ISIC_Part1_Test_Data.zip"
+      approx_size_mb: 232
+      expected_count: 379
+      raw_target_dir: "data/raw/test_images"
+      processed_target_dir: "data/processed/test_images"
+    test_masks:
+      filename: "ISBI2016_ISIC_Part1_Test_GroundTruth.zip"
+      url: "https://isic-archive.s3.amazonaws.com/challenges/2016/ISBI2016_ISIC_Part1_Test_GroundTruth.zip"
+      approx_size_mb: 2
+      expected_count: 379
+      raw_target_dir: "data/raw/test_masks"
+      processed_target_dir: "data/processed/test_masks"
+
+counts:
+  expected_train: 900
+  expected_test: 379
+  train_split: 720
+  val_split: 180
+
+paths:
+  archive_dir: "data/archives"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  splits_dir: "data/splits"
+  train_split_json: "data/splits/train.json"
+  val_split_json: "data/splits/val.json"
+  test_split_json: "data/splits/test.json"
+  validation_report: "results/metrics/validation_report.json"
+
+preprocessing:
+  target_height: 256
+  target_width: 256
+  image_interpolation: "bilinear"       # Resampling filter for RGB images
+  mask_interpolation: "nearest"        # Resampling filter for masks (MUST be nearest)
+  image_normalization:
+    scale_range: [0.0, 1.0]            # Normalized float32 range
+    apply_standardization: false       # Standard ImageNet mean/std disabled in Phase 1
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+  mask_binarization:
+    threshold: 128                     # Pixel values >= 128 are treated as 1, else 0
+    expected_labels: [0, 1]
+  supported_image_extensions:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+  supported_mask_extensions:
+    - ".png"
+  mask_suffix_patterns:
+    - "_Segmentation"
+    - "_segmentation"
+    - "_Segmentation.png"
+    - "_segmentation.png"
+
+split:
+  val_ratio: 0.2                       # 80/20 train/validation split
+  seed: 42                             # Fixed reproducible random seed
